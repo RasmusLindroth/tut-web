@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="tut is a TUI for Mastodon with vim inspired keys. It features multiple-users, compising toots in your $EDITOR and viewing media in your desktop programs.">
     <title>tut - A TUI for Mastodon with vim inspired keys</title>
     <style type="text/css">{{.CSS}}</style>
 </head>
@@ -13,11 +14,11 @@
         <header id="head">
             <h1>tut - a TUI for mastodon</h1>
         </header>
-        <div id="menuicon">
+        <a id="menuicon" href="#menuicon" aria-label="Open menu">
             <div></div>
             <div></div>
             <div></div>
-        </div>
+        </a>
         <menu id="menu">
             <ul>
             {{ range .Pages }}
@@ -35,5 +36,15 @@
         </div>
         <div id="status"><p>-- {{ .CurrentPage }} --</p></div>
     </main>
+    <script>
+    (function() {
+        document.getElementById('menuicon').addEventListener('click', function() {
+            let menu = document.getElementById('menu');
+            let content = document.getElementById('content');
+            menu.classList.toggle('showmenu');
+            content.classList.toggle('hidecontent');
+        });
+    })();
+    </script>
 </body>
 </html>{{end}}
