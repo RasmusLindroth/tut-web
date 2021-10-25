@@ -1,9 +1,12 @@
 package main
 
 import (
+	"flag"
+	"fmt"
 	"io/ioutil"
 	"log"
 	"net/http"
+	"os"
 	"text/template"
 
 	"github.com/RasmusLindroth/tut-web/web"
@@ -28,6 +31,25 @@ type Page struct {
 }
 
 func main() {
+	port := ""
+	portEnv, portEnvSet := os.LookupEnv("port")
+
+	if portEnvSet {
+		port = portEnv
+	}
+
+	portFlag := flag.String("port", "", "web server port")
+	flag.Parse()
+
+	if *portFlag != "" {
+		port = *portFlag
+	}
+
+	if port == "" {
+		fmt.Println("You need to set a port. Use env variable or flag.")
+		os.Exit(1)
+	}
+
 	baseData := PageData{
 		Pages: []Page{
 			{"About", "/"},
@@ -111,5 +133,5 @@ func main() {
 	})
 	http.Handle("/", r)
 
-	http.ListenAndServe(":8000", r)
+	http.ListenAndServe(":"+port, r)
 }
