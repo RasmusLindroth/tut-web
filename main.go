@@ -1,0 +1,115 @@
+package main
+
+import (
+	"io/ioutil"
+	"log"
+	"net/http"
+	"text/template"
+
+	"github.com/RasmusLindroth/tut-web/web"
+	"github.com/gorilla/mux"
+	"github.com/tdewolff/minify"
+	"github.com/tdewolff/minify/css"
+)
+
+type App struct {
+	Templates map[string]*template.Template
+}
+
+type PageData struct {
+	Pages       []Page
+	CurrentPage string
+	CSS         string
+}
+
+type Page struct {
+	Name string
+	URL  string
+}
+
+func main() {
+	baseData := PageData{
+		Pages: []Page{
+			{"About", "/"},
+			{"Install", "/install"},
+			{"Config", "/config"},
+			{"Keys", "/keys"},
+			{"Commands", "/commands"},
+			{"Flags", "/flags"},
+			{"Templates", "/templates"},
+			{"Contact", "/contact"},
+		},
+	}
+	app := &App{
+		Templates: make(map[string]*template.Template),
+	}
+	sites := []string{"about", "install", "config", "keys", "commands", "flags", "templates", "contact"}
+	for _, s := range sites {
+		tmpl, err := template.ParseFS(web.Templates, "templates/base.tmpl", "templates/"+s+".tmpl")
+		if err != nil {
+			log.Fatalln(err)
+		}
+		app.Templates[s] = tmpl
+	}
+
+	m := minify.New()
+	m.AddFunc("text/css", css.Minify)
+	style, err := web.Static.Open("static/style.css")
+	if err != nil {
+		log.Fatalln(err)
+	}
+	b, err := ioutil.ReadAll(style)
+	if err != nil {
+		log.Fatalln(err)
+	}
+	styleB, err := m.Bytes("text/css", b)
+	if err != nil {
+		log.Fatalln(err)
+	}
+	baseData.CSS = string(styleB)
+
+	r := mux.NewRouter().StrictSlash(true)
+	r.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		d := baseData
+		d.CurrentPage = "About"
+		app.Templates["about"].ExecuteTemplate(w, "base", d)
+	})
+	r.HandleFunc("/install", func(w http.ResponseWriter, r *http.Request) {
+		d := baseData
+		d.CurrentPage = "Install"
+		app.Templates["install"].ExecuteTemplate(w, "base", d)
+	})
+	r.HandleFunc("/config", func(w http.ResponseWriter, r *http.Request) {
+		d := baseData
+		d.CurrentPage = "Config"
+		app.Templates["config"].ExecuteTemplate(w, "base", d)
+	})
+	r.HandleFunc("/keys", func(w http.ResponseWriter, r *http.Request) {
+		d := baseData
+		d.CurrentPage = "Keys"
+		app.Templates["keys"].ExecuteTemplate(w, "base", d)
+	})
+	r.HandleFunc("/commands", func(w http.ResponseWriter, r *http.Request) {
+		d := baseData
+		d.CurrentPage = "Commands"
+		app.Templates["commands"].ExecuteTemplate(w, "base", d)
+	})
+	r.HandleFunc("/flags", func(w http.ResponseWriter, r *http.Request) {
+		d := baseData
+		d.CurrentPage = "Flags"
+		app.Templates["flags"].ExecuteTemplate(w, "base", d)
+	})
+	r.HandleFunc("/templates", func(w http.ResponseWriter, r *http.Request) {
+		d := baseData
+		d.CurrentPage = "Templates"
+		app.Templates["templates"].ExecuteTemplate(w, "base", d)
+	})
+	r.HandleFunc("/contact", func(w http.ResponseWriter, r *http.Request) {
+		d := baseData
+		d.CurrentPage = "Contact"
+		app.Templates["contact"].ExecuteTemplate(w, "base", d)
+	})
+	http.Handle("/", r)
+
+	http.ListenAndServe(":8000", r)
+}

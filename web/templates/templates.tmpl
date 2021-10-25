@@ -1,0 +1,25 @@
+{{define "content"}}<h2>Templates</h2>
+<p>You can customise how toots are displayed with a Go <a href="https://pkg.go.dev/text/template" title="Golang text/template" ref="noopener">text/template</a>.
+
+<p>You'll have to place a file named <span class="highlight">toot.tmpl</span>
+in <span class="highlight">XDG_CONFIG_HOME/tut/</span> which usually equals to
+<span class="highlight">~/.config/tut/</span>.</p>
+
+<p>You can copy toot.tmpl from this repo manually or with curl or wget.</p>
+
+<pre>cd ~/.config/tut
+
+<span class="highlight"># using curl</span>
+curl -o toot.tmpl https://raw.githubusercontent.com/RasmusLindroth/tut/master/toot.tmpl
+
+<span class="highlight"># using wget</span>
+wget https://raw.githubusercontent.com/RasmusLindroth/tut/master/toot.tmpl</pre>
+
+<p>The data available for you is two structs. The first one is the <span class="highlight">Toot</span>-struct,
+you can see all fields in
+<a href="https://github.com/RasmusLindroth/tut/blob/master/feed.go" rel="noopener" title="./feed.go">./feed.go</a>.</p>
+<p>The second one is the <span class="highlight">StyleConfig</span>-struct. You can find the fields in 
+<a href="https://github.com/RasmusLindroth/tut/blob/master/config.go" rel="noopener" title="./config.go">./config.go</a>.</p>
+
+<p>You acces them with .Toot and .Style in your template file.</p>
+{{end}}

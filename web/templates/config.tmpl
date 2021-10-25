@@ -1,0 +1,320 @@
+{{define "content"}}<h2>Config</h2>
+<p>Tut is configurable, so you can change things like the colors, the default timeline, 
+what image viewer to use and some more.</span>
+
+<p>You find it in <span class="highlight">XDG_CONFIG_HOME/tut/config.ini</span> which usally equals to <span class="highlight">~/.config/tut/config.ini.</span></p>
+
+<p>In the git-repo you can find a <a href="https://github.com/RasmusLindroth/tut/blob/master/config.example.ini" title="example.config.ini" rel="noopener">example.config.ini</a>.
+It contains the default values. And can be good to look at for reference.</p>
+
+<h2>General config</h2>
+<p>Section <span class="highlight">[general]</span> in your config.</p>
+
+<p><span class="conf" id="auto-load-newer">auto-load-newer</span></p>
+<p>If the program should check for new toots without user interaction.
+If you don't enable this the program will only look for new toots when 
+you reach the bottom or top of your feed. With this enabled it will check
+for new toots every x second.</p>
+<p>default=true</p>
+
+<p><span class="conf" id="auto-load-seconds">auto-load-seconds</span></p>
+<p>How many seconds between each pulling of new toots if you have enabled
+auto-load-newer.</p>
+<p>default=60</p>
+
+<p><span class="conf" id="date-format">date-format</span></p>
+<p>The date format to be used. See <a href="https://godoc.org/time#Time.Format" title="Go Time.Format" rel="noopener">Go time#Time.Format</a>.</p>
+<p>default=2006-01-02 15:04</p>
+
+<p><span class="conf" id="date-today-format">date-today-format</span></p>
+<p>Format for dates the same day. See <a href="#date-format" title="date-format">date-format</a> for more info</p>
+<p>default=15:04</p>
+
+<p><span class="conf" id="date-relative">date-relative</span></p>
+<p>This displays relative dates instead for statuses that are one day or older
+the output is 1y2m1d (1 year 2 months and 1 day)</p>
+
+<p>The value is an integear</p>
+<p>-1     = don't use relative dates</p>
+<p>0     = always use relative dates, except for dates < 1 day</p>
+<p>1 - ∞ = number of days to use relative dates</p>
+<p>Example: date-relative=28 will display a relative date
+for toots that are between 1-28 days old. Otherwhise it
+will use the short or long format</p>
+<p>default=-1</p>
+
+<p><span class="conf" id="timeline">timeline</span></p>
+<p>The timeline that opens up when you start tut</p>
+<p>Valid values:
+<span class="highlight">home</span>, 
+<span class="highlight">direct</span>, 
+<span class="highlight">local</span>, 
+<span class="highlight">federated</span>.</p>
+<p>default=home</p>
+
+<p><span class="conf" id="max-width">max-width</span></p>
+<p>The max width of text before it wraps when displaying toots</p>
+<p>0 = no restriction</p>
+<p>default=0</p>
+
+<p><span class="conf" id="notification-feed">notification-feed</span></p>
+<p>If you want to display a list of notifications under your timeline feed</p>
+<p>default=true</p>
+
+<p><span class="conf" id="list-placement">list-placement</span></p>
+<p>Where do you want the list of toots to be placed?</p>
+<p>Valid values: 
+<span class="highlight">left</span>,
+<span class="highlight">right</span>,
+<span class="highlight">top</span>,
+<span class="highlight">bottom</span>.
+</p>
+<p>default=left</p>
+
+<p><span class="conf" id="list-split">list-split</span></p>
+<p>If you have <a href="#notification-feed" title="notification-feed">notification-feed</a>
+set to true you can display it under the main list of toots (row)
+or place it to the right of the main list of toots (column)</p>
+<p>default=row</p>
+
+<p><span class="conf" id="hide-notification-text">hide-notification-text</span></p>
+<p>Hide notification text above list in column split. It's displayed as 
+[N]otifications.</p>
+<p>default=false</p>
+
+<p><span class="conf" id="list-proportion">list-proportion</span>
+and <span class="conf" id="content-proportion">content-proportion</span></p>
+<p>You can change the proportions of the list view
+in relation to the content view
+list-proportion=1 and content-proportoin=3
+will result in the content taking up 3 times more space</p>
+<p>Must be n > 0</p>
+<p>defaults:</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;list-proportion=1</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;content-proportion=2</p>
+
+<p><span class="conf" id="quote-reply">quote-reply</span></p>
+<p>If you always want to quote original message when replying</p>
+<p>default=false</p>
+
+<p><span class="conf" id="char-limit">char-limit</span></p>
+<p>If you're on an instance with a custom character limit you can set it here</p>
+<p>default=500</p>
+
+<p><span class="conf" id="show-icons">show-icons</span></p>
+<p>If you want to show icons in the list of toots</p>
+<p>default=true</p>
+
+<p><span class="conf" id="short-hints">short-hints</span></p>
+<p>If you've learnt all the shortcut keys you can remove the help text and 
+only show the key in tui. So it gets less cluttered.</p>
+<p>default=false</p>
+
+<h2>Media config</h2>
+<p>Section <span class="highlight">[media]</span> in your config.</p>
+
+<p><span class="conf" id="image-viewer">image-viewer</span></p>
+<p>Your image viewer</p>
+<p>default=xdg-open</p>
+
+<p><span class="conf" id="image-terminal">image-terminal</span></p>
+<p>Open the image viewer in the same terminal as toot.
+Only for terminal based viewers.</p>
+<p>default=false</p>
+
+<p><span class="conf" id="image-single">image-single</span></p>
+<p>If images should open one by one e.g. "imv image.png" multiple times.
+If set to false all images will open at the same time like this 
+"imv image1.png image2.png image3.png".
+Not all image viewers support this, so try it first.</p>
+<p>default=true</p>
+
+<p><span class="conf" id="image-reverse">image-reverse</span></p>
+<p>If you want to open the images in reverse order. In some image viewers 
+this will display the images in the "right" order.</p>
+<p>default=false</p>
+
+<p><span class="conf" id="video-viewer">video-viewer</span></p>
+<p>Your video viewer</p>
+<p>default=xdg-open</p>
+
+<p><span class="conf" id="video-terminal">video-terminal</span></p>
+<p>Open the video viewer in the same terminal as toot.
+Only for terminal based viewers.</p>
+<p>default=false</p>
+
+<p><span class="conf" id="video-single">video-single</span></p>
+<p>If videos should open one by one. See <a href="#image-single" title="image-single">image-single</a>.</p>
+<p>default=true</p>
+
+<p><span class="conf" id="video-reverse">video-reverse</span></p>
+<p>If you want to open the videos in reverse order. In some video apps 
+this will play the files in the "right" order.</p>
+<p>default=false</p>
+
+<p><span class="conf" id="audio-viewer">audio-viewer</span></p>
+<p>Your audio viewer</p>
+<p>default=xdg-open</p>
+
+<p><span class="conf" id="audio-terminal">audio-terminal</span></p>
+<p>Open the audio viewer in the same terminal as toot.
+Only for terminal based viewers.</p>
+<p>default=false</p>
+
+<p><span class="conf" id="audio-reverse">audio-reverse</span></p>
+<p>If you want to play the audio files in reverse order. In some audio apps 
+this will play the files in the "right" order.</p>
+<p>default=false</p>
+
+<p><span class="conf" id="audio-single">audio-single</span></p>
+<p>If audio should open one by one. See <a href="#image-single" title="image-single">image-single</a>.</p>
+<p>default=true</p>
+
+<p><span class="conf" id="link-viewer">link-viewer</span></p>
+<p>Your web browser</p>
+<p>default=xdg-open</p>
+
+<p><span class="conf" id="link-terminal">link-terminal</span></p>
+<p>Open the browser in the same terminal as toot.
+Only for terminal based browsers.</p>
+<p>default=false</p>
+
+<h2>Open custom config</h2>
+<p>Section <span class="highlight">[open-custom]</span> in your config.</p>
+
+<p><span class="conf" id="cx-name">cX-name</span> and <span class="conf" id="cx-use">cX-use</span></p>
+<p>This  allows you to set up to five custom programs to upen URLs with.
+If the url points to an image, you can set c1-name to img and c1-use to imv.
+The name will show up in the UI, so keep it short so all five fits.</p>
+<p>c1-name=name</p>
+<p>c1-use=program</p>
+<p>c2-name=name</p>
+<p>c2-use=program</p>
+<p>c3-name=name</p>
+<p>c3-use=program</p>
+<p>c4-name=name</p>
+<p>c4-use=program</p>
+<p>c5-name=name</p>
+<p>c5-use=program</p>
+
+<h2>Open pattern config</h2>
+<p>Section <span class="highlight">[open-pattern]</span> in your config.</p>
+
+<p><span class="conf" id="x-pattern">x-pattern</span> and <span class="conf" id="x-use">x-use</span></p>
+<p>Here you can set your own glob patterns for opening matching URLs in the
+program you want them to open up in.
+You could for example open Youtube videos in your video player instead of
+your default browser.</p>
+
+<p>You must name the keys foo-pattern and foo-use, where use is the program 
+that will open up the URL. To see the syntax for glob pattern you can follow
+this URL <a href="https://github.com/gobwas/glob#syntax" rel="noopener">https://github.com/gobwas/glob#syntax</a></p>
+
+<p>Example for youtube.com and youtu.be to open up in mpv instead of the browser</p>
+
+<p>y1-pattern=*youtube.com/watch*</p>
+<p>y1-use=mpv</p>
+<p>y2-pattern=*youtu.be/*</p>
+<p>y2-use=mpv</p>
+
+<h2>Desktop notifications config</h2>
+<p>Section <span class="highlight">[desktop-notification]</span> in your config.</p>
+
+<p><span class="conf" id="followers">followers</span></p>
+<p>Notification when someone follows you</p>
+<p>default=false</p>
+
+<p><span class="conf" id="favorite">favorite</span></p>
+<p>Notification when someone favorites one of your toots</p>
+<p>default=false</p>
+
+<p><span class="conf" id="mention">mention</span></p>
+<p>Notification when someone mentions you</p>
+<p>default=false</p>
+
+<p><span class="conf" id="boost">boost</span></p>
+<p>Notification when someone boosts one of your toots</p>
+<p>default=false</p>
+
+<p><span class="conf" id="poll">poll</span></p>
+<p>Notification of poll results</p>
+<p>default=false</p>
+
+<p><span class="conf" id="posts">posts</span></p>
+<p>Notification when there is new posts in current timeline</p>
+<p>default=false</p>
+
+<h2>Style config</h2>
+<p>Section <span class="highlight">[style]</span> in your config.</p>
+
+<p>All styles can be represented in their HEX value like #ffffff or
+with their name, so in this case white.
+The only special value is "default" which equals to transparent,
+so it will be the same color as your terminal.</p>
+
+<p>You can also use xrdb colors like this xrdb:color1
+The program will use colors prefixed with an * first then look
+for URxvt or XTerm if it can't find any color prefixed with an asterik.
+If you don't want tut to guess the prefix you can set the prefix yourself.
+If the xrdb color can't be found a preset color will be used.</p>
+
+<p><span class="conf" id="xrdb-prefix">xrdb-prefix</span></p>
+<p>The xrdb prefix used for colors in .Xresources</p>
+<p>default=guess</p>
+
+<p><span class="conf" id="background">background</span></p>
+<p>The background color used on most elements</p>
+<p>default=xrdb:background</p>
+
+<p><span class="conf" id="text">text</span></p>
+<p>The text color used on most of the text</p>
+<p>default=xrdb:foreground</p>
+
+<p><span class="conf" id="subtle">subtle</span></p>
+<p>The color to display sublte elements or subtle text. Like lines and help text.</p>
+<p>default=xrdb:color14</p>
+
+<p><span class="conf" id="warning-text">warning-text</span></p>
+<p>The color for errors or warnings</p>
+<p>default=xrdb:color1</p>
+
+<p><span class="conf" id="text-special-one">text-special-one</span></p>
+<p>This color is used to display username</p>
+<p>default=xrdb:color5</p>
+
+<p><span class="conf" id="text-special-two">text-special-two</span></p>
+<p>This color is used to display username and key hints</p>
+<p>default=xrdb:color2</p>
+
+<p><span class="conf" id="top-bar-background">top-bar-background</span></p>
+<p>The color of the bar at the top</p>
+<p>default=xrdb:color5</p>
+
+<p><span class="conf" id="top-bar-text">top-bar-text</span></p>
+<p>The color of the text in the bar at the top</p>
+<p>default=xrdb:background</p>
+
+<p><span class="conf" id="status-bar-background">status-bar-background</span></p>
+<p>The color of the bar at the bottom</p>
+<p>default=xrdb:color5</p>
+
+<p><span class="conf" id="status-bar-text">status-bar-text</span></p>
+<p>The color of the text in the bar at the bottom</p>
+<p>default=xrdb:foreground</p>
+
+<p><span class="conf" id="status-bar-view-background">status-bar-view-background</span></p>
+<p>The color of the bar at the bottom in view mode</p>
+<p>default=xrdb:color4</p>
+
+<p><span class="conf" id="status-bar-view-text">status-bar-view-text</span></p>
+<p>The color of the text in the bar at the bottom in view mode</p>
+<p>default=xrdb:foreground</p>
+
+<p><span class="conf" id="list-selected-background">list-selected-background</span></p>
+<p>Background of selected list items</p>
+<p>default=xrdb:color5</p>
+
+<p><span class="conf" id="list-selected-text">list-selected-text</span></p>
+<p>The text color of selected list items</p>
+<p>default=xrdb:background</p>
+{{end}}

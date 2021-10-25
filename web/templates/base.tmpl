@@ -1,0 +1,39 @@
+{{define "base"}}<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>tut - {{ .CurrentPage }}</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tut - A TUI for Mastodon with vim inspired keys</title>
+    <style type="text/css">{{.CSS}}</style>
+</head>
+<body>
+    <main id="showcase">
+        <header id="head">
+            <h1>tut - a TUI for mastodon</h1>
+        </header>
+        <div id="menuicon">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <menu id="menu">
+            <ul>
+            {{ range .Pages }}
+                {{ if eq .Name $.CurrentPage }}
+                    <li class="selected"><a href="{{ .URL }}" title="{{ .Name }}">{{ .Name }}</a></li>
+                {{ else }}
+                    <li><a href="{{ .URL }}" title="{{ .Name }}">{{ .Name }}</a></li>
+                {{ end }}
+            {{ end }}
+                <li><a rel="noopener" target="_blank" href="https://github.com/RasmusLindroth/tut" title="Git-reop">Git-repo</a></li>
+            </ul>
+        </menu>
+        <div id="content">
+        {{template "content" .}}
+        </div>
+        <div id="status"><p>-- {{ .CurrentPage }} --</p></div>
+    </main>
+</body>
+</html>{{end}}

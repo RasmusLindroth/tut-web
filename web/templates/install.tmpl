@@ -1,0 +1,67 @@
+{{define "content"}}<h2>Install</h2>
+<p>You can install tut in three ways</p>
+<ol>
+    <li>Use your <a href="#package-manager" title="Install with package manager">package manager</a></li>
+    <li>Use <a href="#pre-built" title="Install with pre-built binaries">pre-built</a> binaries</li>
+    <li><a href="#yourself" title="Build it yourself">Build it</a> yourself</li>
+</ol>
+
+<h2 id="package-manager">Package manager</h2>
+<p>Currently tut is packaged four in repos. If you know some more places 
+you can <a href="/contact" title="contact me">contact me</a>.</p>
+
+<p>I only manage the AUR package so you'll have to trust the other maintainers.</p>
+
+<p><span class="highlight">Arch and Manjaro</span></p>
+<p>You can find it in the Arch User Repository (AUR). I'm the maintainer.</p>
+
+<p><a href="https://aur.archlinux.org/packages/tut/" rel="noopener" title="Arch / Manjaro">https://aur.archlinux.org/packages/tut/</a></p>
+
+<p><span class="highlight">Alpine linux</span></p>
+<p>tut package is available in the community repository. I'm not the maintainer.</p>
+
+<p><a href="https://pkgs.alpinelinux.org/package/edge/community/x86_64/tut" rel="noopener" title="Alpine Linux">https://pkgs.alpinelinux.org/package/edge/community/x86_64/tut</a></p>
+
+<p><span class="highlight">Debian / Ubuntu</span></p>
+<p>You'll have to add the repo. Follow the instructions on the site. I'm not the maintainer.</p>
+
+<p><a href="http://packages.azlux.fr/ " rel="noopener" title="Debian / Ubuntu">http://packages.azlux.fr/</a></p>
+
+<p><span class="highlight">FreeBSD</span></p>
+<p>I'm not the maintainer.</p>
+
+<p><a href="https://www.freshports.org/net-im/tut" rel="noopener" title="FreeBSD">https://www.freshports.org/net-im/tut</a></p>
+
+<h2 id="pre-built">Pre-built binaries</h2>
+<p>You can find the binaries under <a href="https://github.com/RasmusLindroth/tut/releases" rel="noopener">releases</a> on Github.</p>
+
+<p>The only build I'm able to test is tut-amd64, but I've compiled for some more architectures. They're targeting Linux. If you want some other architecture or OS you can open an 
+<a href="https://github.com/RasmusLindroth/tut/issues" rel="noopener" title="issue">issue</a> or you can <a href="/contact" title="contact me">contact me</a>.</p>
+
+
+<h2 id="yourself">Build it yourself</h2>
+<p>You will need to install <a href="https://golang.org/" rel="noopener" title="Go">Go</a>. Minimum version 1.16.</p>
+
+<pre><span class="highlight"># Fetches and installs tut. Usally /home/user/go/bin</span>
+go get -u github.com/RasmusLindroth/tut
+
+<span class="highlight"># You can also clone the repo if you like
+# First clone this repository</span>
+git clone https://github.com/RasmusLindroth/tut.git
+
+<span class="highlight"># Go to that folder</span>
+cd tut
+
+<span class="highlight"># Build or install</span>
+
+<span class="highlight"># Install (usally /home/user/go/bin)</span>
+go install
+
+<span class="highlight"># Build (same directory i.e. ./ )</span>
+go build</pre>
+
+<p>After you're done you'll have to add the binary into your path.</p>
+
+<p>You should be able to do that by adding <span class="highlight">export PATH=$PATH:$(go env GOPATH)/bin</span> to your shells config.
+The file is <span class="highlight">~/.bashrc</span> for bash and <span class="highlight">~/.zshrc</span> for zsh.
+{{end}}

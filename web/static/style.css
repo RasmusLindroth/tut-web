@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,400;0,700;1,400&display=swap');
+body, html {
+    margin: 0;
+    padding: 0;
+    background-color: #272822
+}
+
+body {
+    font-family: 'Roboto Mono', monospace;
+    color: #ffffff;
+    font-size: 1em;
+}
+
+h1, h2, h3 {
+    display: inline-block;
+}
+
+#menuicon {
+    background-color: #f92672;
+    display: flex;
+    flex-direction: column;
+}
+#menuicon div {
+    width: 35px;
+    height: 0.35em;
+    background-color: #ffffff;
+    margin: 6px 0;
+}
+
+#showcase {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 3fr 50px;
+    grid-template-rows: 3em 1fr 3em 2em;
+    margin: 0;
+    padding: 0;
+}
+
+#showcase p {
+    max-width: 600px;
+}
+
+#showcase ul li {
+    max-width: 600px;
+}
+
+#head {
+    background-color: #f92672;
+    grid-column: 1 / 3;
+    grid-row: 1 / 2;
+    display: flex;
+    align-items: center;
+    padding: 0 0.5em;
+}
+
+#head h1 {
+    padding: 0;
+    margin: 0;
+    font-size: 1.2em;
+    font-weight: normal;
+}
+
+#menu {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+    margin: 0;
+    padding: 0;
+    border-right: 1px solid #b9b9b9;
+}
+
+#menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+    top: 0;
+}
+
+#menu ul li {
+    margin: 0;
+    padding: 0;
+}
+
+#menu ul li a {
+    display: block;
+    padding: 0.2em 0.5em;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.selected {
+    background-color: #f92672;
+}
+
+#content {
+    padding: 0.5em 0.5em;
+    grid-column: 2 / 4;
+    grid-row: 2 / 3;
+}
+
+#content h2 {
+    color: #a6e22e;
+    margin: 0;
+    padding: 0;
+    font-size: 1em;
+    font-weight: normal;
+}
+
+#status {
+    background-color: #f92672;
+    color: #ffffff;
+    grid-column: 1 / 4;
+    grid-row: 3 / 4;
+    display: flex;
+    align-items: center;
+    padding: 0 0.5em;
+}
+
+.highlight {
+    color: #ae81ff;
+}
+
+.conf {
+    color: #ae81ff;
+}
+
+a {
+    color: #f92672;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+pre {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 1em;
+    background-color: #333333;
+    padding: 1em 1em;
+    border: 1px solid #b9b9b9;
+}
+
+.nolist {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
