@@ -1,25 +1,34 @@
 {{define "content"}}<h2>Templates</h2>
-<p>You can customise how toots are displayed with a Go <a href="https://pkg.go.dev/text/template" title="Golang text/template" ref="noopener">text/template</a>.
+<p>You can customise how toots and user profiles are displayed with a Go <a href="https://pkg.go.dev/text/template" title="Golang text/template" ref="noopener">text/template</a>.
 
 <p>You'll have to place a file named <span class="highlight">toot.tmpl</span>
+and/or <span class="highlight">user.tmpl</span>
 in <span class="highlight">XDG_CONFIG_HOME/tut/</span> which usually equals to
 <span class="highlight">~/.config/tut/</span>.</p>
 
-<p>You can copy toot.tmpl from this repo manually or with curl or wget.</p>
+<p>You can copy toot.tmpl and user.tmpl from the repo manually or with curl or wget.</p>
 
 <pre>cd ~/.config/tut
 
 <span class="highlight"># using curl</span>
 curl -o toot.tmpl https://raw.githubusercontent.com/RasmusLindroth/tut/master/toot.tmpl
 
-<span class="highlight"># using wget</span>
-wget https://raw.githubusercontent.com/RasmusLindroth/tut/master/toot.tmpl</pre>
+curl -o user.tmpl https://raw.githubusercontent.com/RasmusLindroth/tut/master/user.tmpl
 
-<p>The data available for you is two structs. The first one is the <span class="highlight">Toot</span>-struct,
+<span class="highlight"># using wget</span>
+wget https://raw.githubusercontent.com/RasmusLindroth/tut/master/toot.tmpl
+
+wget https://raw.githubusercontent.com/RasmusLindroth/tut/master/user.tmpl</pre>
+
+<p>The data available for you in <span class="highlight">toot.tmpl</span> is two structs. The first one is the <span class="highlight">Toot</span>-struct,
 you can see all fields in
 <a href="https://github.com/RasmusLindroth/tut/blob/master/feed.go" rel="noopener" title="./feed.go">./feed.go</a>.</p>
 <p>The second one is the <span class="highlight">StyleConfig</span>-struct. You can find the fields in 
 <a href="https://github.com/RasmusLindroth/tut/blob/master/config.go" rel="noopener" title="./config.go">./config.go</a>.</p>
 
 <p>You acces them with .Toot and .Style in your template file.</p>
+
+<p>The data available in <span class="highlight">user.tmpl</span> is almost the same. You still have the
+<span class="highlight">StyleConfig</span> but instead of <span class="highlight">Toot</span> you have a struct named <span class="highlight">User</span>. You can see
+all fields in <a href="https://github.com/RasmusLindroth/tut/blob/master/feed.go" rel="noopener" title="./feed.go">./feed.go</a>.</p>
 {{end}}
