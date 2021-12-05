@@ -114,6 +114,13 @@ will result in the content taking up 3 times more space</p>
 only show the key in tui. So it gets less cluttered.</p>
 <p>default=false</p>
 
+<p><span class="conf" id="redraw-ui">redraw-ui</span></p>
+<p>If you don't want the whole UI to update, and only the text content you can 
+set this option to true. This will lead to some artifacts being left on the 
+screen when emojis are present. But it will keep the UI from flashing on every
+single toot in some terminals.</p>
+<p>default=true</p>
+
 <h2>Media config</h2>
 <p>Section <span class="highlight">[media]</span> in your config.</p>
 
