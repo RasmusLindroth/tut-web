@@ -7,14 +7,10 @@ what image viewer to use and some more.</span>
 <p>In the git-repo you can find a <a href="https://github.com/RasmusLindroth/tut/blob/master/config.example.ini" title="example.config.ini" rel="noopener">example.config.ini</a>.
 It contains the default values. And can be good to look at for reference.</p>
 
-<h2>General config</h2>
 <p>Section <span class="highlight">[general]</span> in your config</p>
-<p><span class="conf" id="auto-load-newer">auto-load-newer</span></p>
-<p>If the program should check for new toots without user interaction. If you don't enable this the program will only look for new toots when you reach the bottom or top of your feed. With this enabled it will check for new toots every x second.</p>
+<p><span class="conf" id="confirmation">confirmation</span></p>
+<p>Shows a confirmation view before actions such as favorite, delete toot, boost etc.</p>
 <p>default=true</p>
-<p><span class="conf" id="auto-load-seconds">auto-load-seconds</span></p>
-<p>How many seconds between each pulling of new toots if you have enabled auto-load-newer</p>
-<p>default=60</p>
 <p><span class="conf" id="date-format">date-format</span></p>
 <p>The date format to be used. See <a href="https://godoc.org/time#Time.Format" title="Go Time.Format" rel="noopener">Go time#Time.Format</a></p>
 <p>default=2006-01-02 15:04</p>
@@ -175,11 +171,18 @@ It contains the default values. And can be good to look at for reference.</p>
 <h2>Style config</h2>
 <p>Section <span class="highlight">[style]</span> in your config</p>
 <p>All styles can be represented in their HEX value like #ffffff or with their name, so in this case white. The only special value is "default" which equals to transparent, so it will be the same color as your terminal.</p>
-<p>You can also use xrdb colors like this xrdb:color1 The program will use colors prefixed with an * first then look for URxvt or XTerm if it can't find any color prefixed with an asterik. If you don't want tut to guess the prefix you can set the prefix yourself. If the xrdb color can't be found a preset color will be used.</p>
+<p>You can also use xrdb colors like this xrdb:color1 The program will use colors prefixed with an * first then look for URxvt or XTerm if it can't find any color prefixed with an asterik. If you don't want tut to guess the prefix you can set the prefix yourself. If the xrdb color can't be found a preset color will be used. You'll have to set theme=none for this to work.</p>
 
 <p><span class="conf" id="xrdb-prefix">xrdb-prefix</span></p>
 <p>The xrdb prefix used for colors in .Xresources.</p>
 <p>default=guess</p>
+<p><span class="conf" id="theme">theme</span></p>
+<p>You can use some themes that comes bundled with tut check out the themes available on the URL below. If a theme is named "nord.ini" you just write theme=nord</p>
+<p></p>
+<p><a href="https://github.com/RasmusLindroth/tut/tree/master/config/themes" title="themes for tut" rel="noopener">./tut/config/themes</a></p>
+<p></p>
+<p>If you want to use your own theme set theme to none then you can create your own theme below</p>
+<p>default=default</p>
 <p><span class="conf" id="background">background</span></p>
 <p>The background color used on most elements.</p>
 <p>default=xrdb:background</p>
