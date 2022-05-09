@@ -7,6 +7,7 @@ what image viewer to use and some more.</span>
 <p>In the git-repo you can find a <a href="https://github.com/RasmusLindroth/tut/blob/master/config.example.ini" title="example.config.ini" rel="noopener">example.config.ini</a>.
 It contains the default values. And can be good to look at for reference.</p>
 
+<h2>General config</h2>
 <p>Section <span class="highlight">[general]</span> in your config</p>
 <p><span class="conf" id="confirmation">confirmation</span></p>
 <p>Shows a confirmation view before actions such as favorite, delete toot, boost etc.</p>
@@ -225,4 +226,168 @@ It contains the default values. And can be good to look at for reference.</p>
 <p><span class="conf" id="list-selected-text">list-selected-text</span></p>
 <p>The text color of selected list items.</p>
 <p>default=xrdb:background</p>
+<h2>Input config</h2>
+<p>Section <span class="highlight">[input]</span> in your config</p>
+<p>You can edit the keys for tut below.</p>
+<p>The syntax is a bit weird, but it works. And I'll try to explain it as well as I can.</p>
+<p>Example:</p>
+<p>status-favorite="[F]avorite","Un[F]avorite",'f','F'</p>
+<p>status-delete="[D]elete",'d','D'</p>
+<p>status-favorite and status-delete differs because favorite can be in two states, so you will have to add two key hints.</p>
+<p>Most keys will only have on key hint. Look at the default value for reference.</p>
+<p>Key hints must be in some of the following formats. Remember the quotation marks.</p>
+<p>"" = empty</p>
+<p>"[D]elete" = Delete with a highlighted D</p>
+<p>"Un[F]ollow" = UnFollow with a highlighted F</p>
+<p>"[Enter]" = Enter where everything is highlighted</p>
+<p>"Yan[K]" = YanK with a highlighted K</p>
+<p>After the hint (or hints) you must set the keys. You can do this in two ways, with single quotation marks or double ones.</p>
+<p>The single ones are for single chars like 'a', 'b', 'c' and double marks are for special keys like "Enter". Remember that they are case sensetive.</p>
+<p>To find the names of special keys you have to go to the following site and look for "var KeyNames = map[Key]string{"</p>
+<p><a href="https://github.com/gdamore/tcell/blob/master/key.go" title="Special keys from tcell" rel="noopener">gdamore/tcell/key.go</a>.</p>
+
+<p><span class="conf" id="global-down">global-down</span></p>
+<p>Keys for moving down</p>
+<p>default="",'j','J',"Down"</p>
+<p><span class="conf" id="global-up">global-up</span></p>
+<p>Keys for moving up</p>
+<p>default="",'k','K',"Up"</p>
+<p><span class="conf" id="global-enter">global-enter</span></p>
+<p>To select items</p>
+<p>default="","Enter"</p>
+<p><span class="conf" id="global-back">global-back</span></p>
+<p>To go back</p>
+<p>default="[Esc]","Esc"</p>
+<p><span class="conf" id="global-exit">global-exit</span></p>
+<p>To go back and exit Tut</p>
+<p>default="[Q]uit",'q','Q'</p>
+<p><span class="conf" id="main-home">main-home</span></p>
+<p>Move to the top</p>
+<p>default="",'g',"Home"</p>
+<p><span class="conf" id="main-end">main-end</span></p>
+<p>Move to the bottom</p>
+<p>default="",'G',"End"</p>
+<p><span class="conf" id="main-prev-feed">main-prev-feed</span></p>
+<p>Go to previous feed</p>
+<p>default="",'h','H',"Left"</p>
+<p><span class="conf" id="main-next-feed">main-next-feed</span></p>
+<p>Go to next feed</p>
+<p>default="",'l','L',"Right"</p>
+<p><span class="conf" id="main-notification-focus">main-notification-focus</span></p>
+<p>Focus on the notification list</p>
+<p>default="[N]otifications",'n','N'</p>
+<p><span class="conf" id="main-compose">main-compose</span></p>
+<p>Compose a new toot</p>
+<p>default="",'c','C'</p>
+<p><span class="conf" id="status-avatar">status-avatar</span></p>
+<p>Open avatar</p>
+<p>default="[A]vatar",'a','A'</p>
+<p><span class="conf" id="status-boost">status-boost</span></p>
+<p>Boost a toot</p>
+<p>default="[B]oost","Un[B]oost",'b','B'</p>
+<p><span class="conf" id="status-delete">status-delete</span></p>
+<p>Delete a toot</p>
+<p>default="[D]elete",'d','D'</p>
+<p><span class="conf" id="status-favorite">status-favorite</span></p>
+<p>Favorite a toot</p>
+<p>default="[F]avorite","Un[F]avorite",'f','F'</p>
+<p><span class="conf" id="status-media">status-media</span></p>
+<p>Open toots media files</p>
+<p>default="[M]edia",'m','M'</p>
+<p><span class="conf" id="status-links">status-links</span></p>
+<p>Open links</p>
+<p>default="[O]pen",'o','O'</p>
+<p><span class="conf" id="status-poll">status-poll</span></p>
+<p>Open poll</p>
+<p>default="[P]oll",'p','P'</p>
+<p><span class="conf" id="status-reply">status-reply</span></p>
+<p>Reply to toot</p>
+<p>default="[R]eply",'r','R'</p>
+<p><span class="conf" id="status-bookmark">status-bookmark</span></p>
+<p>Save/bookmark a toot</p>
+<p>default="[S]ave","Un[S]ave",'s','S'</p>
+<p><span class="conf" id="status-thread">status-thread</span></p>
+<p>View thread</p>
+<p>default="[T]hread",'t','T'</p>
+<p><span class="conf" id="status-user">status-user</span></p>
+<p>Open user profile</p>
+<p>default="[U]ser",'u','U'</p>
+<p><span class="conf" id="status-view-focus">status-view-focus</span></p>
+<p>Open the view mode</p>
+<p>default="[V]iew",'v','V'</p>
+<p><span class="conf" id="status-yank">status-yank</span></p>
+<p>Yank the url of the toot</p>
+<p>default="[Y]ank",'y','Y'</p>
+<p><span class="conf" id="status-toggle-spoiler">status-toggle-spoiler</span></p>
+<p>Remove the spoiler</p>
+<p>default="Press [Z] to toggle spoiler",'z','Z'</p>
+<p><span class="conf" id="user-avatar">user-avatar</span></p>
+<p>View avatar</p>
+<p>default="[A]vatar",'a','A'</p>
+<p><span class="conf" id="user-block">user-block</span></p>
+<p>Block the user</p>
+<p>default="[B]lock","Un[B]lock",'b','B'</p>
+<p><span class="conf" id="user-follow">user-follow</span></p>
+<p>Follow user</p>
+<p>default="[F]ollow","Un[F]ollow",'f','F'</p>
+<p><span class="conf" id="user-mute">user-mute</span></p>
+<p>Mute user</p>
+<p>default="[M]ute","Un[M]ute",'m','M'</p>
+<p><span class="conf" id="user-links">user-links</span></p>
+<p>Open links</p>
+<p>default="[O]pen",'o','O'</p>
+<p><span class="conf" id="user-user">user-user</span></p>
+<p>View user profile</p>
+<p>default="[U]ser",'u','U'</p>
+<p><span class="conf" id="user-view-focus">user-view-focus</span></p>
+<p>Open view mode</p>
+<p>default="[V]iew",'v','V'</p>
+<p><span class="conf" id="user-yank">user-yank</span></p>
+<p>Yank the user URL</p>
+<p>default="[Y]ank",'y','Y'</p>
+<p><span class="conf" id="list-open-feed">list-open-feed</span></p>
+<p>Open list</p>
+<p>default="[O]pen",'o','O'</p>
+<p><span class="conf" id="link-open">link-open</span></p>
+<p>Open URL</p>
+<p>default="[O]pen",'o','O'</p>
+<p><span class="conf" id="link-yank">link-yank</span></p>
+<p>Yank the URL</p>
+<p>default="[Y]ank",'y','Y'</p>
+<p><span class="conf" id="compose-edit-spoiler">compose-edit-spoiler</span></p>
+<p>Edit spoiler text on new toot</p>
+<p>default="[C]W text",'c','C'</p>
+<p><span class="conf" id="compose-edit-text">compose-edit-text</span></p>
+<p>Edit the text on new toot</p>
+<p>default="[E]dit text",'e','E'</p>
+<p><span class="conf" id="compose-include-quote">compose-include-quote</span></p>
+<p>Include a quote when replying</p>
+<p>default="[I]nclude quote",'i','I'</p>
+<p><span class="conf" id="compose-media-focus">compose-media-focus</span></p>
+<p>Focus on adding media to toot</p>
+<p>default="[M]edia",'m','M'</p>
+<p><span class="conf" id="compose-post">compose-post</span></p>
+<p>Post the new toot</p>
+<p>default="[P]ost",'p','P'</p>
+<p><span class="conf" id="compose-toggle-content-warning">compose-toggle-content-warning</span></p>
+<p>Toggle content warning on toot</p>
+<p>default="[T]oggle CW",'t','T'</p>
+<p><span class="conf" id="compose-visibility">compose-visibility</span></p>
+<p>Edit the visibility on new toot</p>
+<p>default="[V]isibility",'v','V'</p>
+<p><span class="conf" id="media-delete">media-delete</span></p>
+<p>Delete media file</p>
+<p>default="[D]elete",'d','D'</p>
+<p><span class="conf" id="media-edit-desc">media-edit-desc</span></p>
+<p>Edit the description on media file</p>
+<p>default="[E]dit desc",'e','E'</p>
+<p><span class="conf" id="media-add">media-add</span></p>
+<p>Add a new media file</p>
+<p>default="[A]dd",'a','A'</p>
+<p><span class="conf" id="vote-vote">vote-vote</span></p>
+<p>Vote on poll</p>
+<p>default="[V]ote",'v','V'</p>
+<p><span class="conf" id="vote-select">vote-select</span></p>
+<p>Select item to vote on</p>
+<p>default="[Enter] to select",' ', "Enter"</p>
 {{end}}
