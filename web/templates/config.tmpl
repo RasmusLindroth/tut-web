@@ -74,6 +74,24 @@ It contains the default values. And can be good to look at for reference.</p>
 <p><span class="conf" id="redraw-ui">redraw-ui</span></p>
 <p>If you don't want the whole UI to update, and only the text content you can set this option to true. This will lead to some artifacts being left on the screen when emojis are present. But it will keep the UI from flashing on every single toot in some terminals.</p>
 <p>default=true</p>
+<p><span class="conf" id="leader-key">leader-key</span></p>
+<p>The leader is used as a shortcut to run commands as you can do in Vim. By default this is disabled and you enable it by setting a leader-key. It can only consist of one char and I like to use comma as leader key. So to set it you write leader-key=,</p>
+<p><span class="conf" id="leader-timeout">leader-timeout</span></p>
+<p>Number of milliseconds before the leader command resets. So if you tap the leader-key by mistake or are to slow it empties all the input after X milliseconds.</p>
+<p>default=1000</p>
+<p><span class="conf" id="leader-action">leader-action</span></p>
+<p>You set actions for the leader-key with one or more leader-action. It consists of two parts first the action then the shortcut. And they're seperated by a comma.</p>
+<p></p>
+<p>Available commands: home, direct, local, federated, compose, blocking, bookmarks, saved, favorited, boosts, favorites, following, followers, muting, profile, notifications, lists</p>
+<p></p>
+<p>The shortcuts are up to you, but keep them quite short and make sure they don't collide. If you have one shortcut that is "f" and an other one that is "fav", the one with "f" will always run and "fav" will never run.</p>
+<p></p>
+<p>Some examples:</p>
+<p>leader-action=local,lo</p>
+<p>leader-action=lists,li</p>
+<p>leader-action=federated,fed</p>
+<p>leader-action=direct,d</p>
+<p></p>
 <h2>Media config</h2>
 <p>Section <span class="highlight">[media]</span> in your config</p>
 <p><span class="conf" id="image-viewer">image-viewer</span></p>
