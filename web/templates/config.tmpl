@@ -82,15 +82,16 @@ It contains the default values. And can be good to look at for reference.</p>
 <p><span class="conf" id="leader-action">leader-action</span></p>
 <p>You set actions for the leader-key with one or more leader-action. It consists of two parts first the action then the shortcut. And they're seperated by a comma.</p>
 <p></p>
-<p>Available commands: home, direct, local, federated, compose, blocking, bookmarks, saved, favorited, boosts, favorites, following, followers, muting, profile, notifications, lists</p>
+<p>Available commands: home, direct, local, federated, compose, blocking, bookmarks, saved, favorited, boosts, favorites, following, followers, muting, profile, notifications, lists, tag</p>
 <p></p>
-<p>The shortcuts are up to you, but keep them quite short and make sure they don't collide. If you have one shortcut that is "f" and an other one that is "fav", the one with "f" will always run and "fav" will never run.</p>
+<p>The shortcuts are up to you, but keep them quite short and make sure they don't collide. If you have one shortcut that is "f" and an other one that is "fav", the one with "f" will always run and "fav" will never run. Tag is special as you need to add the tag after, see the example below.</p>
 <p></p>
 <p>Some examples:</p>
 <p>leader-action=local,lo</p>
 <p>leader-action=lists,li</p>
 <p>leader-action=federated,fed</p>
 <p>leader-action=direct,d</p>
+<p>leader-action=tag linux,tl</p>
 <p></p>
 <h2>Media config</h2>
 <p>Section <span class="highlight">[media]</span> in your config</p>
