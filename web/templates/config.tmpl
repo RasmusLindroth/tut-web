@@ -12,6 +12,37 @@ It contains the default values. And can be good to look at for reference.</p>
 <p><span class="conf" id="confirmation">confirmation</span></p>
 <p>Shows a confirmation view before actions such as favorite, delete toot, boost etc.</p>
 <p>default=true</p>
+<p><span class="conf" id="timelines">timelines</span></p>
+<p>Timelines adds windows of feeds. You can customize the number of feeds, what they should show and the key to activate them.</p>
+<p></p>
+<p>Available timelines: home, direct, local, federated, bookmarks, saved, favorited, notifications, lists, tag</p>
+<p></p>
+<p>Tag is special as you need to add the tag after, see the example below.</p>
+<p></p>
+<p>The syntax is:</p>
+<p>timelines=feed,[name],[keys...]</p>
+<p></p>
+<p>Tha values in brackets are optional. You can see the syntax for keys under the [input] section.</p>
+<p></p>
+<p>Some examples:</p>
+<p></p>
+<p>home timeline with the name Home</p>
+<p>timelines=home,Home</p>
+<p></p>
+<p>local timeline with the name Local and it gets focus when you press 2</p>
+<p>timelines=local,Local,'2'</p>
+<p></p>
+<p>notification timeline with the name [N]otifications and it gets focus when you press n or N</p>
+<p>timelines=notifications,[N]otifications,'n','N'</p>
+<p></p>
+<p>tag timeline for #linux with the name Linux and it gets focus when you press</p>
+<p>timelines=tag linux,Linux,"F2"</p>
+<p></p>
+<p></p>
+<p>If you don't set any timelines it will default to this:</p>
+<p>timelines=home</p>
+<p>timelines=notifications,[N]otifications,'n','N'</p>
+<p></p>
 <p><span class="conf" id="date-format">date-format</span></p>
 <p>The date format to be used. See <a href="https://godoc.org/time#Time.Format" title="Go Time.Format" rel="noopener">Go time#Time.Format</a></p>
 <p>default=2006-01-02 15:04</p>
@@ -28,17 +59,10 @@ It contains the default values. And can be good to look at for reference.</p>
 <p></p>
 <p>Example: date-relative=28 will display a relative date for toots that are between 1-28 days old. Otherwhise it will use the short or long format.</p>
 <p>default=-1</p>
-<p><span class="conf" id="timeline">timeline</span></p>
-<p>The timeline that opens up when you start tut.</p>
-<p>Valid values: home, direct, local, federated</p>
-<p>default=home</p>
 <p><span class="conf" id="max-width">max-width</span></p>
 <p>The max width of text before it wraps when displaying toots.</p>
 <p>0 = no restriction.</p>
 <p>default=0</p>
-<p><span class="conf" id="notification-feed">notification-feed</span></p>
-<p>If you want to display a list of notifications under your timeline feed.</p>
-<p>default=true</p>
 <p><span class="conf" id="list-placement">list-placement</span></p>
 <p>Where do you want the list of toots to be placed?</p>
 <p>Valid values: left, right, top, bottom.</p>
@@ -46,9 +70,6 @@ It contains the default values. And can be good to look at for reference.</p>
 <p><span class="conf" id="list-split">list-split</span></p>
 <p>If you have <a href="#notification-feed" title="notification-feed">notification-feed</a> set to true you can display it under the main list of toots (row) or place it to the right of the main list of toots (column).</p>
 <p>default=row</p>
-<p><span class="conf" id="hide-notification-text">hide-notification-text</span></p>
-<p>Hide notification text above list in column split. It's displayed as [N]otifications.</p>
-<p>default=false</p>
 <p><span class="conf" id="list-proportion">list-proportion</span></p>
 <p>You can change the proportions of the list view in relation to the content view list-proportion=1 and content-proportoin=3 will result in the content taking up 3 times more space.</p>
 <p>Must be n > 0</p>
@@ -292,6 +313,12 @@ It contains the default values. And can be good to look at for reference.</p>
 <p><span class="conf" id="main-next-feed">main-next-feed</span></p>
 <p>Go to next feed</p>
 <p>default="",'l','L',"Right"</p>
+<p><span class="conf" id="main-prev-window">main-prev-window</span></p>
+<p>Focus on the previous feed window</p>
+<p>default="","Backtab"</p>
+<p><span class="conf" id="main-next-window">main-next-window</span></p>
+<p>Focus on the next feed window</p>
+<p>default="","Tab"</p>
 <p><span class="conf" id="main-notification-focus">main-notification-focus</span></p>
 <p>Focus on the notification list</p>
 <p>default="[N]otifications",'n','N'</p>
