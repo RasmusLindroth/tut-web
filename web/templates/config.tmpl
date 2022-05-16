@@ -103,9 +103,11 @@ It contains the default values. And can be good to look at for reference.</p>
 <p><span class="conf" id="leader-action">leader-action</span></p>
 <p>You set actions for the leader-key with one or more leader-action. It consists of two parts first the action then the shortcut. And they're seperated by a comma.</p>
 <p></p>
-<p>Available commands: home, direct, local, federated, compose, blocking, bookmarks, saved, favorited, boosts, favorites, following, followers, muting, profile, notifications, lists, tag</p>
+<p>Available commands: home, direct, local, federated, compose, blocking, bookmarks, saved, favorited, boosts, favorites, following, followers, muting, profile, notifications, lists, tag, window</p>
 <p></p>
 <p>The shortcuts are up to you, but keep them quite short and make sure they don't collide. If you have one shortcut that is "f" and an other one that is "fav", the one with "f" will always run and "fav" will never run. Tag is special as you need to add the tag after, see the example below.</p>
+<p></p>
+<p>Window is also special as it's a shortcut for switching between the timelines you've set under general and they are zero indexed. window 0 = your first timeline, window 1 = your second and so on.</p>
 <p></p>
 <p>Some examples:</p>
 <p>leader-action=local,lo</p>
@@ -113,6 +115,7 @@ It contains the default values. And can be good to look at for reference.</p>
 <p>leader-action=federated,fed</p>
 <p>leader-action=direct,d</p>
 <p>leader-action=tag linux,tl</p>
+<p>leader-action=window 0,h</p>
 <p></p>
 <h2>Media config</h2>
 <p>Section <span class="highlight">[media]</span> in your config</p>
@@ -424,6 +427,9 @@ It contains the default values. And can be good to look at for reference.</p>
 <p><span class="conf" id="compose-visibility">compose-visibility</span></p>
 <p>Edit the visibility on new toot</p>
 <p>default="[V]isibility",'v','V'</p>
+<p><span class="conf" id="compose-poll">compose-poll</span></p>
+<p>Switch to creating a poll</p>
+<p>default="P[O]ll",'o','O'</p>
 <p><span class="conf" id="media-delete">media-delete</span></p>
 <p>Delete media file</p>
 <p>default="[D]elete",'d','D'</p>
@@ -439,4 +445,19 @@ It contains the default values. And can be good to look at for reference.</p>
 <p><span class="conf" id="vote-select">vote-select</span></p>
 <p>Select item to vote on</p>
 <p>default="[Enter] to select",' ', "Enter"</p>
+<p><span class="conf" id="poll-add">poll-add</span></p>
+<p>Add a new poll option</p>
+<p>default="[A]dd",'a','A'</p>
+<p><span class="conf" id="poll-edit">poll-edit</span></p>
+<p>Edit a poll option</p>
+<p>default="[E]dit",'e','E'</p>
+<p><span class="conf" id="poll-delete">poll-delete</span></p>
+<p>Delete a poll option</p>
+<p>default="[D]elete",'d','D'</p>
+<p><span class="conf" id="poll-multi-toggle">poll-multi-toggle</span></p>
+<p>Toggle voting on multiple options</p>
+<p>default="Toggle [M]ultiple",'m','M'</p>
+<p><span class="conf" id="poll-expiration">poll-expiration</span></p>
+<p>Change the expiration of poll</p>
+<p>default="E[X]pires",'x','X'</p>
 {{end}}
