@@ -11,24 +11,24 @@ in <span class="highlight">XDG_CONFIG_HOME/tut/</span> which usually equals to
 <pre>cd ~/.config/tut
 
 <span class="highlight"># using curl</span>
-curl -o toot.tmpl https://raw.githubusercontent.com/RasmusLindroth/tut/master/toot.tmpl
+curl -o toot.tmpl https://raw.githubusercontent.com/RasmusLindroth/tut/master/config/toot.tmpl
 
-curl -o user.tmpl https://raw.githubusercontent.com/RasmusLindroth/tut/master/user.tmpl
+curl -o user.tmpl https://raw.githubusercontent.com/RasmusLindroth/tut/master/config/user.tmpl
 
 <span class="highlight"># using wget</span>
-wget https://raw.githubusercontent.com/RasmusLindroth/tut/master/toot.tmpl
+wget https://raw.githubusercontent.com/RasmusLindroth/tut/master/config/toot.tmpl
 
-wget https://raw.githubusercontent.com/RasmusLindroth/tut/master/user.tmpl</pre>
+wget https://raw.githubusercontent.com/RasmusLindroth/tut/master/config/user.tmpl</pre>
 
 <p>The data available for you in <span class="highlight">toot.tmpl</span> is two structs. The first one is the <span class="highlight">Toot</span>-struct,
 you can see all fields in
-<a href="https://github.com/RasmusLindroth/tut/blob/master/feed.go" rel="noopener" title="./feed.go">./feed.go</a>.</p>
-<p>The second one is the <span class="highlight">StyleConfig</span>-struct. You can find the fields in 
-<a href="https://github.com/RasmusLindroth/tut/blob/master/config.go" rel="noopener" title="./config.go">./config.go</a>.</p>
+<a href="https://github.com/RasmusLindroth/tut/blob/master/ui/item_status.go" rel="noopener" title="./ui/item_status.go">./ui/item_status.go</a>.</p>
+<p>The second one is the <span class="highlight">Style</span>-struct. You can find the fields in 
+<a href="https://github.com/RasmusLindroth/tut/blob/master/config/config.go" rel="noopener" title="./config/config.go">./config/config.go</a>.</p>
 
 <p>You acces them with .Toot and .Style in your template file.</p>
 
 <p>The data available in <span class="highlight">user.tmpl</span> is almost the same. You still have the
-<span class="highlight">StyleConfig</span> but instead of <span class="highlight">Toot</span> you have a struct named <span class="highlight">User</span>. You can see
-all fields in <a href="https://github.com/RasmusLindroth/tut/blob/master/feed.go" rel="noopener" title="./feed.go">./feed.go</a>.</p>
+<span class="highlight">Style</span> but instead of <span class="highlight">Toot</span> you have a struct named <span class="highlight">User</span>. You can see
+all fields in <a href="https://github.com/RasmusLindroth/tut/blob/master/ui/item_user.go" rel="noopener" title="./ui/item_user.go">./ui/item_user.go</a>.</p>
 {{end}}
