@@ -103,11 +103,16 @@ It contains the default values. And can be good to look at for reference.</p>
 <p><span class="conf" id="leader-action">leader-action</span></p>
 <p>You set actions for the leader-key with one or more leader-action. It consists of two parts first the action then the shortcut. And they're seperated by a comma.</p>
 <p></p>
-<p>Available commands: home, direct, local, federated, compose, blocking, bookmarks, saved, favorited, boosts, favorites, following, followers, muting, preferences, profile, notifications, lists, tag, window</p>
+<p>Available commands: home, direct, local, federated, compose, blocking, bookmarks, saved, favorited, boosts, favorites, following, followers, muting, preferences, profile, notifications, lists, tag, window, list-placement, list-split, proportions</p>
 <p></p>
-<p>The shortcuts are up to you, but keep them quite short and make sure they don't collide. If you have one shortcut that is "f" and an other one that is "fav", the one with "f" will always run and "fav" will never run. Tag is special as you need to add the tag after, see the example below.</p>
+<p>The shortcuts are up to you, but keep them quite short and make sure they don't collide. If you have one shortcut that is "f" and an other one that is "fav", the one with "f" will always run and "fav" will never run. </p>
 <p></p>
-<p>Window is also special as it's a shortcut for switching between the timelines you've set under general and they are zero indexed. window 0 = your first timeline, window 1 = your second and so on.</p>
+<p>Some special leaders:</p>
+<p>tag is special as you need to add the tag after, e.g. tag linux</p>
+<p>window is special as it's a shortcut for switching between the timelines you've set under general and they are zero indexed. window 0 = your first timeline, window 1 = your second and so on.</p>
+<p>list-placement as it takes the argument top, right, bottom or left</p>
+<p>list-split as it takes the argument column or row</p>
+<p>proportions takes the arguments [int] [int], where the first integer is the list and the other content, e.g. proportions 1 3. See list-proportion above for more information.</p>
 <p></p>
 <p>Some examples:</p>
 <p>leader-action=local,lo</p>
@@ -116,6 +121,9 @@ It contains the default values. And can be good to look at for reference.</p>
 <p>leader-action=direct,d</p>
 <p>leader-action=tag linux,tl</p>
 <p>leader-action=window 0,h</p>
+<p>leader-action=list-placement bottom,b</p>
+<p>leader-action=list-split column,c</p>
+<p>leader-action=proportions 1 3,3</p>
 <p></p>
 <h2>Media config</h2>
 <p>Section <span class="highlight">[media]</span> in your config</p>
