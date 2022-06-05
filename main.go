@@ -90,6 +90,15 @@ func main() {
 	}
 	baseData.CSS = string(styleB)
 
+	preview, err := web.Static.Open("static/preview.png")
+	if err != nil {
+		log.Fatalln(err)
+	}
+	c, err := ioutil.ReadAll(preview)
+	if err != nil {
+		log.Fatalln(err)
+	}
+
 	r := mux.NewRouter().StrictSlash(true)
 	r.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		d := baseData
@@ -130,6 +139,12 @@ func main() {
 		d := baseData
 		d.CurrentPage = "Contact"
 		app.Templates["contact"].ExecuteTemplate(w, "base", d)
+	})
+	r.HandleFunc("/static/preview.png", func(w http.ResponseWriter, req *http.Request) {
+		w.WriteHeader(http.StatusOK)
+		w.Header().Add("Content-Type", "image/png")
+
+		w.Write(c)
 	})
 	http.Handle("/", r)
 
