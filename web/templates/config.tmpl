@@ -106,7 +106,7 @@ It contains the default values. And can be good to look at for reference.</p>
 <p><span class="conf" id="leader-action">leader-action</span></p>
 <p>You set actions for the leader-key with one or more leader-action. It consists of two parts first the action then the shortcut. And they're separated by a comma.</p>
 <p></p>
-<p>Available commands: home, direct, local, federated, compose, blocking, bookmarks, saved, favorited, boosts, favorites, following, followers, muting, preferences, profile, notifications, lists, tag, window, list-placement, list-split, proportions</p>
+<p>Available commands: home, direct, local, federated, compose, blocking, bookmarks, saved, favorited, boosts, favorites, following, followers, muting, newer, preferences, profile, notifications, lists, tag, window, list-placement, list-split, proportions</p>
 <p></p>
 <p>The shortcuts are up to you, but keep them quite short and make sure they don't collide. If you have one shortcut that is "f" and an other one that is "fav", the one with "f" will always run and "fav" will never run. </p>
 <p></p>
@@ -232,11 +232,13 @@ It contains the default values. And can be good to look at for reference.</p>
 <p>The xrdb prefix used for colors in .Xresources.</p>
 <p>default=guess</p>
 <p><span class="conf" id="theme">theme</span></p>
-<p>You can use some themes that comes bundled with tut check out the themes available on the URL below. If a theme is named "nord.ini" you just write theme=nord</p>
+<p>You can use some themes that comes bundled with tut. Check out the themes available on the URL below. If a theme is named "nord.ini" you just write theme=nord</p>
 <p></p>
 <p><a href="https://github.com/RasmusLindroth/tut/tree/master/config/themes" title="themes for tut" rel="noopener">./tut/config/themes</a></p>
 <p></p>
-<p>If you want to use your own theme set theme to none then you can create your own theme below</p>
+<p>You can also create a theme file in your config directory e.g. ~/.config/tut/themes/foo.ini and then set theme=foo.</p>
+<p></p>
+<p>If you want to use your own theme but don't want to create a new file, set theme=none and then you can create your own theme below.</p>
 <p>default=default</p>
 <p><span class="conf" id="background">background</span></p>
 <p>The background color used on most elements.</p>
