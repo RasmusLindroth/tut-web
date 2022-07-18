@@ -99,6 +99,15 @@ func main() {
 		log.Fatalln(err)
 	}
 
+	theme, err := web.Static.Open("static/theme.html")
+	if err != nil {
+		log.Fatalln(err)
+	}
+	t, err := ioutil.ReadAll(theme)
+	if err != nil {
+		log.Fatalln(err)
+	}
+
 	r := mux.NewRouter().StrictSlash(true)
 	r.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		d := baseData
@@ -140,10 +149,14 @@ func main() {
 		d.CurrentPage = "Contact"
 		app.Templates["contact"].ExecuteTemplate(w, "base", d)
 	})
+	r.HandleFunc("/theme", func(w http.ResponseWriter, req *http.Request) {
+		w.WriteHeader(http.StatusOK)
+		w.Header().Add("Content-Type", "text/html")
+		w.Write(t)
+	})
 	r.HandleFunc("/static/preview.png", func(w http.ResponseWriter, req *http.Request) {
 		w.WriteHeader(http.StatusOK)
 		w.Header().Add("Content-Type", "image/png")
-
 		w.Write(c)
 	})
 	http.Handle("/", r)

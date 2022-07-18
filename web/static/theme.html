@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tut theme</title>
+    <style>
+        :root {
+            --background: #272822;
+            --text: #f8f8f2;
+            --subtle: gray;
+            --warning-text: #f92672;
+            --text-special-one: #ae81ff;
+            --text-special-two: #a6e22e;
+            --top-bar-background: #f92672;
+            --top-bar-text: #f8f8f2;
+            --status-bar-background: #f92672;
+            --status-bar-text: #f8f8f2;
+            --status-bar-view-background: #ae81ff;
+            --status-bar-view-text: #f8f8f2;
+            --list-selected-background: #f92672;
+            --list-selected-text: #f8f8f2;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            font-size: 1.3em;
+        }
+
+        .preview {
+            background-color: var(--background);
+            color: var(--text);
+        }
+
+        .autocomplete {
+            display: inline-block;
+            background-color: var(--background);
+            color: var(--text);
+        }
+
+        .autocomplete p {
+            margin: 0;
+        }
+
+        .subtle {
+            color: var(--subtle);
+        }
+
+        .specialOne,
+        .infoColor {
+            color: var(--text-special-one);
+        }
+
+        .specialTwo,
+        .cc {
+            color: var(--text-special-two);
+        }
+
+        .cc {
+            font-weight: bold;
+        }
+
+        #list p {
+            margin: 0;
+        }
+
+        .active {
+            background-color: var(--list-selected-background);
+            color: var(--list-selected-text);
+        }
+
+        .inactive {
+            background-color: var(--status-bar-view-background);
+            color: var(--status-bar-view-text);
+        }
+
+        #head {
+            background-color: var(--top-bar-background);
+            color: var(--top-bar-text);
+        }
+
+        #content {
+            display: grid;
+            grid-template-columns: 35% auto;
+            grid-template-rows: auto 2em;
+        }
+
+        #list {
+            grid-column-start: 1;
+            grid-column-end: 2;
+            grid-row-start: 1;
+            grid-row-end: 3;
+        }
+
+        #main {
+            grid-column-start: 2;
+            grid-column-end: 3;
+            grid-row-start: 1;
+            grid-row-end: 1;
+            padding-left: 1em;
+        }
+
+        #topMain p {
+            margin: 0;
+        }
+
+        #controls {
+            grid-column-start: 2;
+            grid-column-end: 3;
+            grid-row-start: 2;
+            grid-row-end: 3;
+            padding-left: 1em;
+        }
+
+        #statusbar {
+            background-color: var(--status-bar-background);
+            color: var(--status-bar-text);
+        }
+
+        .statusbarView {
+            background-color: var(--status-bar-view-background) !important;
+            color: var(--status-bar-view-text) !important;
+        }
+
+        #modal {
+            text-align: center;
+            padding: 2em 0;
+        }
+
+        #modalBtns {
+            display: flex;
+            justify-content: center;
+            column-gap: 2em;
+        }
+
+        #modalBtns>div {
+            padding: 0.5em;
+        }
+
+        #btnYes {
+            background-color: var(--status-bar-view-background);
+            color: var(--background);
+        }
+
+        #btnNo {
+            color: var(--status-bar-view-background);
+        }
+
+        .activeAc {
+            background-color: var(--status-bar-view-background);
+            color: var(--status-bar-view-text);
+        }
+
+        .cbarErr {
+            color: var(--warning-text);
+        }
+
+        #colorPicker p {
+            margin: 0;
+        }
+
+    </style>
+</head>
+
+<body>
+    <main>
+        <h1>Make your own theme for tut here</h1>
+        <p><a href="/" title="Go back to main site">Go back to main site.</a></p>
+        <h3>Normal view</h3>
+        <div class="preview">
+            <div id="head">tut - home (1/1) me@example.com</div>
+            <div id="content">
+                <div id="list">
+                    <p class="active">18:00 foo</p>
+                    <p>17:00 bar</p>
+                    <p>2022-07-16 abc@example.com</p>
+                    <p>2022-07-15 abc@example.com</p>
+                    <p class="subtle">Local</p>
+                    <p>18:00 foo</p>
+                    <p>17:00 bar</p>
+                    <p class="inactive">2022-07-16 abc@example.com</p>
+                    <p>2022-07-15 abc@example.com</p>
+                    <p class="subtle">Notifications</p>
+                    <p>18:00 foo</p>
+                    <p class="inactive">17:00 bar</p>
+                    <p>2022-07-16 abc@example.com</p>
+                    <p>2022-07-15 abc@example.com</p>
+                </div>
+                <div id="main">
+                    <div id="topMain">
+                        <p class="subtle">Foo (bar) boosted</p>
+                        <p class="specialTwo">Short</p>
+                        <p class="specialOne">full@example.com</p>
+                    </div>
+                    <p>Here is the content.</p>
+                    <p id="info">Replies <span class="infoColor">2</span> Boosts <span class="infoColor">4</span>
+                        Favorites
+                        <span class="infoColor">8</span>
+                    </p>
+                </div>
+                <div id="controls">
+                    <p>
+                        <span class="cc">F</span>avorite
+                        <span class="cc">B</span>oost
+                        <span class="cc">T</span>hread
+                        <span class="cc">R</span>eply
+                        <span class="cc">V</span>iew
+                        <span class="cc">U</span>ser
+                        <span class="cc">M</span>edia
+                        <span class="cc">O</span>pen
+                        <span class="cc">A</span>vatar
+                        <span class="cc">S</span>ave
+                        <span class="cc">Y</span>ank
+                    </p>
+                </div>
+            </div>
+            <div id="statusbar">--LIST--</div>
+            <div id="cmdbar">Press ? or :help to learn how tut functions</div>
+        </div>
+        <button id="vmode">Switch to view mode</button>
+        <button id="cmdBtn">Show error message</button>
+        <h3>Yes or No</h3>
+        <div class="preview">
+            <div id="modal">
+                <p>Do you want to exit tut?</p>
+                <div id="modalBtns">
+                    <div id="btnYes">Yes</div>
+                    <div id="btnNo">No</div>
+                </div>
+            </div>
+        </div>
+        <h3>Cmdbar autocomplete</h3>
+        <div>
+            <div class="autocomplete">
+                <p>:blocking</p>
+                <p>:boosts</p>
+                <p class="activeAc">:bookmarks</p>
+                <p>:compose</p>
+                <p>:favorited</p>
+                <p>:favorites</p>
+            </div>
+        </div>
+        <div id="themer">
+            <h3>Customize your theme</h3>
+            <p>Just now it only works with HEX-colors.</p>
+            <div id="colorPicker">
+                <p>background <input type="color" id="bg-c"> <input type="text" id="bg-h"></p>
+                <p>text <input type="color" id="t-c"> <input type="text" id="t-h"></p>
+                <p>subtle <input type="color" id="s-c"> <input type="text" id="s-h"></p>
+                <p>warning-text <input type="color" id="wt-c"> <input type="text" id="wt-h"></p>
+                <p>text-special-one <input type="color" id="tso-c"> <input type="text" id="tso-h"></p>
+                <p>text-special-two <input type="color" id="tst-c"> <input type="text" id="tst-h"></p>
+                <p>top-bar-background <input type="color" id="tbb-c"> <input type="text" id="tbb-h"></p>
+                <p>tob-bar-text <input type="color" id="tbt-c"> <input type="text" id="tbt-h"></p>
+                <p>status-bar-background <input type="color" id="sbb-c"> <input type="text" id="sbb-h"></p>
+                <p>status-bar-text <input type="color" id="sbt-c"> <input type="text" id="sbt-h"></p>
+                <p>status-bar-view-background <input type="color" id="sbvb-c"> <input type="text" id="sbvb-h"></p>
+                <p>status-bar-view-text <input type="color" id="sbvt-c"> <input type="text" id="sbvt-h"></p>
+                <p>list-selected-background <input type="color" id="lsb-c"> <input type="text" id="lsb-h"></p>
+                <p>list-selected-text <input type="color" id="lst-c"> <input type="text" id="lst-h"></p>
+            </div>
+            <h4>Output</h4>
+            <p>You'll have to paste the output to a new file e.g. foo.ini located in ~/.config/tut/themes/foo.ini and then set theme=foo in ~/.config/tut/config.ini</p>
+            <pre id="output"></pre>
+            <p><a href="/" title="Go back to main site">Go back to main site.</a></p>
+        </div>
+    </main>
+    <script>
+        let vmodeBtn = document.getElementById("vmode");
+        let sbar = document.getElementById("statusbar");
+        vmodeBtn.addEventListener("click", () => {
+            sbar.classList.toggle("statusbarView");
+            if (sbar.classList.contains("statusbarView")) {
+                vmodeBtn.innerText = "Switch to normal mode";
+            } else {
+                vmodeBtn.innerText = "Switch to view mode";
+            }
+        }, false);
+
+        let cmdBtn = document.getElementById("cmdBtn");
+        let cbar = document.getElementById("cmdbar");
+        cmdBtn.addEventListener("click", () => {
+            cbar.classList.toggle("cbarErr");
+            if (cbar.classList.contains("cbarErr")) {
+                cmdBtn.innerText = "Show no error";
+                cbar.innerText = "Can't connect to example.com. Err: connection timed out.";
+            } else {
+                cmdBtn.innerText = "Show error message";
+                cbar.innerText = "Press ? or :help to learn how tut functions";
+            }
+        }, false);
+
+        let themeName = [
+            ["bg", "#272822", "background"],
+            ["t", "#f8f8f2", "text"],
+            ["s", "#808080", "subtle"],
+            ["wt", "#f92672", "warning-text"],
+            ["tso", "#ae81ff", "text-special-one"],
+            ["tst", "#a6e22e", "text-special-two"],
+            ["tbb", "#f92672", "top-bar-background"],
+            ["tbt", "#f8f8f2", "top-bar-text"],
+            ["sbb", "#f92672", "status-bar-background"],
+            ["sbt", "#f8f8f2", "status-bar-text"],
+            ["sbvb", "#ae81ff", "status-bar-view-background"],
+            ["sbvt", "#f8f8f2", "status-bar-view-text"],
+            ["lsb", "#f92672", "list-selected-background"],
+            ["lst", "#f8f8f2", "list-selected-text"],
+        ];
+
+        let root = document.documentElement;
+        themeName.forEach((arr, i) => {
+            root.style.setProperty(`--${arr[2]}`, arr[1]);
+            let elC = document.getElementById(`${arr[0]}-c`);
+            let elH = document.getElementById(`${arr[0]}-h`);
+            elC.value = arr[1];
+            elH.value = arr[1];
+
+            elC.addEventListener("change", () => {
+                elH.value = elC.value;
+                console.log("changing from c");
+                root.style.setProperty(`--${arr[2]}`, elC.value);
+                Output();
+            }, false);
+            elH.addEventListener("change", () => {
+                elC.value = elH.value;
+                root.style.setProperty(`--${arr[2]}`, elC.value);
+                Output();
+            }, false);
+        });
+        Output();
+
+        function Output() {
+            let output = document.getElementById("output");
+            output.innerHTML = "";
+            themeName.forEach((arr, i) => {
+                let val = document.getElementById(`${arr[0]}-c`).value;
+                output.innerHTML += `${arr[2]}=${val}\n`;
+            });
+        }
+    </script>
+</body>
+
+</html>
