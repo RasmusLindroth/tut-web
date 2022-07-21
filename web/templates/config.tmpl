@@ -95,6 +95,11 @@ It contains the default values. And can be good to look at for reference.</p>
 <p><span class="conf" id="show-help">show-help</span></p>
 <p>If you want to show a message in the cmdbar on how to access the help text.</p>
 <p>default=true</p>
+<p><span class="conf" id="terminal-title">terminal-title</span></p>
+<p>0 = No terminal title</p>
+<p>1 = Show title in terminal and top bar</p>
+<p>2 = Only show terminal title, and no top bar in tut.</p>
+<p>default=0</p>
 <p><span class="conf" id="redraw-ui">redraw-ui</span></p>
 <p>If you don't want the whole UI to update, and only the text content you can set this option to true. This will lead to some artifacts being left on the screen when emojis are present. But it will keep the UI from flashing on every single toot in some terminals.</p>
 <p>default=true</p>
@@ -242,46 +247,56 @@ It contains the default values. And can be good to look at for reference.</p>
 <p>default=default</p>
 <p><span class="conf" id="background">background</span></p>
 <p>The background color used on most elements.</p>
-<p>default=xrdb:background</p>
 <p><span class="conf" id="text">text</span></p>
 <p>The text color used on most of the text.</p>
-<p>default=xrdb:foreground</p>
 <p><span class="conf" id="subtle">subtle</span></p>
 <p>The color to display sublte elements or subtle text. Like lines and help text.</p>
-<p>default=xrdb:color14</p>
 <p><span class="conf" id="warning-text">warning-text</span></p>
 <p>The color for errors or warnings</p>
-<p>default=xrdb:color1</p>
 <p><span class="conf" id="text-special-one">text-special-one</span></p>
 <p>This color is used to display username.</p>
-<p>default=xrdb:color5</p>
 <p><span class="conf" id="text-special-two">text-special-two</span></p>
 <p>This color is used to display username and key hints.</p>
-<p>default=xrdb:color2</p>
 <p><span class="conf" id="top-bar-background">top-bar-background</span></p>
 <p>The color of the bar at the top</p>
-<p>default=xrdb:color5</p>
 <p><span class="conf" id="top-bar-text">top-bar-text</span></p>
 <p>The color of the text in the bar at the top.</p>
-<p>default=xrdb:background</p>
 <p><span class="conf" id="status-bar-background">status-bar-background</span></p>
 <p>The color of the bar at the bottom</p>
-<p>default=xrdb:color5</p>
 <p><span class="conf" id="status-bar-text">status-bar-text</span></p>
 <p>The color of the text in the bar at the bottom.</p>
-<p>default=xrdb:foreground</p>
 <p><span class="conf" id="status-bar-view-background">status-bar-view-background</span></p>
 <p>The color of the bar at the bottom in view mode.</p>
-<p>default=xrdb:color4</p>
 <p><span class="conf" id="status-bar-view-text">status-bar-view-text</span></p>
 <p>The color of the text in the bar at the bottom in view mode.</p>
-<p>default=xrdb:foreground</p>
 <p><span class="conf" id="list-selected-background">list-selected-background</span></p>
 <p>Background of selected list items.</p>
-<p>default=xrdb:color5</p>
 <p><span class="conf" id="list-selected-text">list-selected-text</span></p>
 <p>The text color of selected list items.</p>
-<p>default=xrdb:background</p>
+<p><span class="conf" id="list-selected-inactive-background">list-selected-inactive-background</span></p>
+<p>The background color of selected list items that are out of focus.</p>
+<p><span class="conf" id="list-selected-inactive-text">list-selected-inactive-text</span></p>
+<p>The text color of selected list items that are out of focus.</p>
+<p><span class="conf" id="controls-text">controls-text</span></p>
+<p>The main color of the text for key hints</p>
+<p><span class="conf" id="controls-highlight">controls-highlight</span></p>
+<p>The highlight color of for key hints</p>
+<p><span class="conf" id="autocomplete-background">autocomplete-background</span></p>
+<p>The background color in dropdowns and autocompletions</p>
+<p><span class="conf" id="autocomplete-text">autocomplete-text</span></p>
+<p>The text color in dropdowns at autocompletions</p>
+<p><span class="conf" id="autocomplete-selected-background">autocomplete-selected-background</span></p>
+<p>The background color for selected value in dropdowns and autocompletions</p>
+<p><span class="conf" id="autocomplete-selected-text">autocomplete-selected-text</span></p>
+<p>The text color for selected value in dropdowns and autocompletions</p>
+<p><span class="conf" id="button-color-one">button-color-one</span></p>
+<p>The background color on selected button and the text color of unselected buttons</p>
+<p><span class="conf" id="button-color-two">button-color-two</span></p>
+<p>The text color on selected button and the background color of unselected buttons</p>
+<p><span class="conf" id="timeline-name-background">timeline-name-background</span></p>
+<p>The background on named timelines.</p>
+<p><span class="conf" id="timeline-name-text">timeline-name-text</span></p>
+<p>The text color on named timelines</p>
 <h2>Input config</h2>
 <p>Section <span class="highlight">[input]</span> in your config</p>
 <p>You can edit the keys for tut below.</p>

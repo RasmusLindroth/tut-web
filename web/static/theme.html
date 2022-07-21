@@ -22,6 +22,18 @@
             --status-bar-view-text: #f8f8f2;
             --list-selected-background: #f92672;
             --list-selected-text: #f8f8f2;
+            --list-selected-inactive-background: #f92672;
+            --list-selected-inactive-text: #f8f8f8;
+            --controls-text: #f8f8f8;
+            --controls-highlight: #a6e22e;
+            --autocomplete-background: #272822;
+            --autocomplete-text: #f8f8f8;
+            --autocomplete-selected-background: #ae81ff;
+            --autocomplete-selected-text: #f8f8f8;
+            --button-color-one: #f92672;
+            --button-color-two: #272822;
+            --timeline-name-background: #272822;
+            --timeline-name-text: #808080;
         }
 
         body {
@@ -36,8 +48,8 @@
 
         .autocomplete {
             display: inline-block;
-            background-color: var(--background);
-            color: var(--text);
+            background-color: var(--autocomplete-background);
+            color: var(--autocomplete-text);
         }
 
         .autocomplete p {
@@ -53,12 +65,12 @@
             color: var(--text-special-one);
         }
 
-        .specialTwo,
-        .cc {
+        .specialTwo {
             color: var(--text-special-two);
         }
 
         .cc {
+            color: var(--controls-highlight);
             font-weight: bold;
         }
 
@@ -72,8 +84,8 @@
         }
 
         .inactive {
-            background-color: var(--status-bar-view-background);
-            color: var(--status-bar-view-text);
+            background-color: var(--list-selected-inactive-background);
+            color: var(--list-selected-inactive-text);
         }
 
         #head {
@@ -94,6 +106,13 @@
             grid-row-end: 3;
         }
 
+        #list p {
+              display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;  
+  overflow: hidden;
+        }
+
         #main {
             grid-column-start: 2;
             grid-column-end: 3;
@@ -107,11 +126,13 @@
         }
 
         #controls {
+            color: var(--controls-text);
             grid-column-start: 2;
             grid-column-end: 3;
             grid-row-start: 2;
             grid-row-end: 3;
             padding-left: 1em;
+            overflow: hidden;
         }
 
         #statusbar {
@@ -140,17 +161,17 @@
         }
 
         #btnYes {
-            background-color: var(--status-bar-view-background);
-            color: var(--background);
+            background-color: var(--button-color-one);
+            color: var(--button-color-two);
         }
 
         #btnNo {
-            color: var(--status-bar-view-background);
+            color: var(--button-color-one);
         }
 
         .activeAc {
-            background-color: var(--status-bar-view-background);
-            color: var(--status-bar-view-text);
+            background-color: var(--autocomplete-selected-background);
+            color: var(--autocomplete-selected-text);
         }
 
         .cbarErr {
@@ -161,13 +182,20 @@
             margin: 0;
         }
 
+        .name {
+            background-color: var(--timeline-name-background);
+            color: var(--timeline-name-text);
+        }
+
     </style>
 </head>
 
 <body>
     <main>
         <h1>Make your own theme for tut here</h1>
-        <p><a href="/" title="Go back to main site">Go back to main site.</a></p>
+        <p>
+            <a href="/" title="Go back to main site">Go back to main site.</a>
+        </p>
         <h3>Normal view</h3>
         <div class="preview">
             <div id="head">tut - home (1/1) me@example.com</div>
@@ -177,12 +205,12 @@
                     <p>17:00 bar</p>
                     <p>2022-07-16 abc@example.com</p>
                     <p>2022-07-15 abc@example.com</p>
-                    <p class="subtle">Local</p>
+                    <p class="name">Local</p>
                     <p>18:00 foo</p>
                     <p>17:00 bar</p>
                     <p class="inactive">2022-07-16 abc@example.com</p>
                     <p>2022-07-15 abc@example.com</p>
-                    <p class="subtle">Notifications</p>
+                    <p class="name">Notifications</p>
                     <p>18:00 foo</p>
                     <p class="inactive">17:00 bar</p>
                     <p>2022-07-16 abc@example.com</p>
@@ -195,7 +223,10 @@
                         <p class="specialOne">full@example.com</p>
                     </div>
                     <p>Here is the content.</p>
-                    <p id="info">Replies <span class="infoColor">2</span> Boosts <span class="infoColor">4</span>
+                    <p id="info">Replies
+                        <span class="infoColor">2</span>
+                        Boosts
+                        <span class="infoColor">4</span>
                         Favorites
                         <span class="infoColor">8</span>
                     </p>
@@ -245,26 +276,14 @@
         <div id="themer">
             <h3>Customize your theme</h3>
             <p>Just now it only works with HEX-colors.</p>
-            <div id="colorPicker">
-                <p>background <input type="color" id="bg-c"> <input type="text" id="bg-h"></p>
-                <p>text <input type="color" id="t-c"> <input type="text" id="t-h"></p>
-                <p>subtle <input type="color" id="s-c"> <input type="text" id="s-h"></p>
-                <p>warning-text <input type="color" id="wt-c"> <input type="text" id="wt-h"></p>
-                <p>text-special-one <input type="color" id="tso-c"> <input type="text" id="tso-h"></p>
-                <p>text-special-two <input type="color" id="tst-c"> <input type="text" id="tst-h"></p>
-                <p>top-bar-background <input type="color" id="tbb-c"> <input type="text" id="tbb-h"></p>
-                <p>tob-bar-text <input type="color" id="tbt-c"> <input type="text" id="tbt-h"></p>
-                <p>status-bar-background <input type="color" id="sbb-c"> <input type="text" id="sbb-h"></p>
-                <p>status-bar-text <input type="color" id="sbt-c"> <input type="text" id="sbt-h"></p>
-                <p>status-bar-view-background <input type="color" id="sbvb-c"> <input type="text" id="sbvb-h"></p>
-                <p>status-bar-view-text <input type="color" id="sbvt-c"> <input type="text" id="sbvt-h"></p>
-                <p>list-selected-background <input type="color" id="lsb-c"> <input type="text" id="lsb-h"></p>
-                <p>list-selected-text <input type="color" id="lst-c"> <input type="text" id="lst-h"></p>
-            </div>
+            <div id="colorPicker"></div>
             <h4>Output</h4>
-            <p>You'll have to paste the output to a new file e.g. foo.ini located in ~/.config/tut/themes/foo.ini and then set theme=foo in ~/.config/tut/config.ini</p>
+            <p>You'll have to paste the output to a new file e.g. foo.ini located in ~/.config/tut/themes/foo.ini and
+                then set theme=foo in ~/.config/tut/config.ini</p>
             <pre id="output"></pre>
-            <p><a href="/" title="Go back to main site">Go back to main site.</a></p>
+            <p>
+                <a href="/" title="Go back to main site">Go back to main site.</a>
+            </p>
         </div>
     </main>
     <script>
@@ -307,25 +326,47 @@
             ["sbvt", "#f8f8f2", "status-bar-view-text"],
             ["lsb", "#f92672", "list-selected-background"],
             ["lst", "#f8f8f2", "list-selected-text"],
+            ["lsib", "#ae81ff", "list-selected-inactive-background"],
+            ["lsit", "#f8f8f8", "list-selected-inactive-text"],
+            ["ct", "#f8f8f8", "controls-text"],
+            ["ch", "#a6e22e", "controls-highlight"],
+            ["ab", "#272822", "autocomplete-background"],
+            ["at", "#f8f8f8", "autocomplete-text"],
+            ["asb", "#ae81ff", "autocomplete-selected-background"],
+            ["ast", "#f8f8f8", "autocomplete-selected-text"],
+            ["bco", "#f92672", "button-color-one"],
+            ["bct", "#272822", "button-color-two"],
+            ["tnb", "#272822", "timeline-name-background"],
+            ["tnt", "#808080", "timeline-name-text"]
         ];
 
         let root = document.documentElement;
+        let cp = document.getElementById("colorPicker");
         themeName.forEach((arr, i) => {
+            let p = document.createElement("p");
+            p.innerText = arr[2] + " ";
+            let ic = document.createElement("input");
+            ic.type = "color"
+            ic.id = `${arr[0]}-c`
+            ic.value = arr[1]
+            let ih = document.createElement("input");
+            ih.type = "text"
+            ih.value = arr[1]
+            p.appendChild(ic);
+            p.append(" ")
+            p.appendChild(ih);
+            cp.appendChild(p);
             root.style.setProperty(`--${arr[2]}`, arr[1]);
-            let elC = document.getElementById(`${arr[0]}-c`);
-            let elH = document.getElementById(`${arr[0]}-h`);
-            elC.value = arr[1];
-            elH.value = arr[1];
 
-            elC.addEventListener("change", () => {
-                elH.value = elC.value;
+            ic.addEventListener("change", () => {
+                ih.value = ic.value;
                 console.log("changing from c");
-                root.style.setProperty(`--${arr[2]}`, elC.value);
+                root.style.setProperty(`--${arr[2]}`, ic.value);
                 Output();
             }, false);
-            elH.addEventListener("change", () => {
-                elC.value = elH.value;
-                root.style.setProperty(`--${arr[2]}`, elC.value);
+            ih.addEventListener("change", () => {
+                c.value = h.value;
+                root.style.setProperty(`--${arr[2]}`, ic.value);
                 Output();
             }, false);
         });
