@@ -23,17 +23,19 @@ It contains the default values. And can be good to look at for reference.</p>
 <p>Tag is special as you need to add the tag after, see the example below.</p>
 <p></p>
 <p>The syntax is:</p>
-<p>timelines=feed,[name],[keys...]</p>
+<p>timelines=feed,[name],[keys...],[showBoosts],[showReplies]</p>
 <p></p>
 <p>Tha values in brackets are optional. You can see the syntax for keys under the [input] section.</p>
+<p></p>
+<p>showBoosts and showReplies must be formated as bools. So either true or false. They always defaults to true.</p>
 <p></p>
 <p>Some examples:</p>
 <p></p>
 <p>home timeline with the name Home</p>
 <p>timelines=home,Home</p>
 <p></p>
-<p>local timeline with the name Local and it gets focus when you press 2</p>
-<p>timelines=local,Local,'2'</p>
+<p>local timeline with the name Local and it gets focus when you press 2. It will also hide boosts in the timeline, but show toots that are replies.</p>
+<p>timelines=local,Local,'2',false,true</p>
 <p></p>
 <p>notification timeline with the name [N]otifications and it gets focus when you press n or N</p>
 <p>timelines=notifications,[N]otifications,'n','N'</p>
@@ -98,6 +100,9 @@ It contains the default values. And can be good to look at for reference.</p>
 <p><span class="conf" id="show-help">show-help</span></p>
 <p>If you want to show a message in the cmdbar on how to access the help text.</p>
 <p>default=true</p>
+<p><span class="conf" id="stick-to-top">stick-to-top</span></p>
+<p>If you always want tut to jump to the newest post. May ruin your reading experience.</p>
+<p>default=false</p>
 <p><span class="conf" id="terminal-title">terminal-title</span></p>
 <p>0 = No terminal title</p>
 <p>1 = Show title in terminal and top bar</p>
@@ -183,7 +188,7 @@ It contains the default values. And can be good to look at for reference.</p>
 <p>default=false</p>
 <h2>Open-Custom config</h2>
 <p>Section <span class="highlight">[open-custom]</span> in your config</p>
-<p>This sections allows you to set up to five custom programs to upen URLs with. If the url points to an image, you can set c1-name to img and c1-use to imv. If the program runs in a terminal and you want to run it in the same terminal as tut. Set cX-terminal to true. The name will show up in the UI, so keep it short so all five fits.</p>
+<p>This sections allows you to set up to five custom programs to open URLs with. If the url points to an image, you can set c1-name to img and c1-use to imv. If the program runs in a terminal and you want to run it in the same terminal as tut. Set cX-terminal to true. The name will show up in the UI, so keep it short so all five fits.</p>
 <p>c1-name=name</p>
 <p>c1-use=program</p>
 <p>c1-terminal=false</p>
@@ -257,7 +262,7 @@ It contains the default values. And can be good to look at for reference.</p>
 <p><span class="conf" id="text">text</span></p>
 <p>The text color used on most of the text.</p>
 <p><span class="conf" id="subtle">subtle</span></p>
-<p>The color to display sublte elements or subtle text. Like lines and help text.</p>
+<p>The color to display subtle elements or subtle text. Like lines and help text.</p>
 <p><span class="conf" id="warning-text">warning-text</span></p>
 <p>The color for errors or warnings</p>
 <p><span class="conf" id="text-special-one">text-special-one</span></p>
@@ -276,6 +281,8 @@ It contains the default values. And can be good to look at for reference.</p>
 <p>The color of the bar at the bottom in view mode.</p>
 <p><span class="conf" id="status-bar-view-text">status-bar-view-text</span></p>
 <p>The color of the text in the bar at the bottom in view mode.</p>
+<p><span class="conf" id="command-text">command-text</span></p>
+<p>The color of the text in the command bar at the bottom.</p>
 <p><span class="conf" id="list-selected-background">list-selected-background</span></p>
 <p>Background of selected list items.</p>
 <p><span class="conf" id="list-selected-text">list-selected-text</span></p>
@@ -320,7 +327,7 @@ It contains the default values. And can be good to look at for reference.</p>
 <p>"[Enter]" = Enter where everything is highlighted</p>
 <p>"Yan[K]" = YanK with a highlighted K</p>
 <p>After the hint (or hints) you must set the keys. You can do this in two ways, with single quotation marks or double ones.</p>
-<p>The single ones are for single chars like 'a', 'b', 'c' and double marks are for special keys like "Enter". Remember that they are case sensetive.</p>
+<p>The single ones are for single chars like 'a', 'b', 'c' and double marks are for special keys like "Enter". Remember that they are case sensitive.</p>
 <p>To find the names of special keys you have to go to the following site and look for "var KeyNames = map[Key]string{"</p>
 <p><a href="https://github.com/gdamore/tcell/blob/master/key.go" title="Special keys from tcell" rel="noopener">gdamore/tcell/key.go</a>.</p>
 
