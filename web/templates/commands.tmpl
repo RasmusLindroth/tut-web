@@ -2,41 +2,42 @@
 <p>Here is a list of commands you can use in tut. They are all prefixed with :
 as you have to press : to enter command mode.</p>
 <ul class="nolist">
-    <li><span class="highlight">:q :quit</span> exit</li>
-    <li><span class="highlight">:timeline</span> home, local, federated, direct, notifications, mentions, favorited, special-all, special-boosts, special-replies</li>
-    <li><span class="highlight">:tl</span> h, l, f, d, n, m, fav, sa, sb, sr (shorter form)</li>
-    <li><span class="highlight">:blocking</span> lists users that you have blocked</li>
-    <li><span class="highlight">:boosts</span> lists users that boosted the toot</li>
-    <li><span class="highlight">:bookmarks</span> lists all your bookmarks</li>
-    <li><span class="highlight">:clear-notifications</span> clear all notifications</li>
-    <li><span class="highlight">:close-window</span> closes the current window</li>
-    <li><span class="highlight">:compose</span> compose a new toot</li>
-    <li><span class="highlight">:edit</span> edit one of your toots</li>
-    <li><span class="highlight">:favorited</span> lists toots you've favorited</li>
-    <li><span class="highlight">:favorites</span> lists users that favorited the toot</li>
-    <li><span class="highlight">:follow-tag</span> followed by the hashtag to follow e.g. :follow-tag tut</li>
-    <li><span class="highlight">:followers</span> list of people the account are following. It only works on profiles</li>
-    <li><span class="highlight">:following</span> list of people following the account. It only works on profiles</li>
-    <li><span class="highlight">:h :help</span> show help</li>
-    <li><span class="highlight">:history</span> show edits of a toot</li>
-    <li><span class="highlight">:lists</span> show a list of your lists</li>
-    <li><span class="highlight">:list-placement</span> top, right, bottom, left</li>
-    <li><span class="highlight">:list-split</span> row, column</li>
-    <li><span class="highlight">:move-window</span> left, right, up, down, home, end</li>
-    <li><span class="highlight">:mv</span> l, r, u, d, h, e (shorter form)</li>
-    <li><span class="highlight">:muting</span> lists users that you have muted</li>
-    <li><span class="highlight">:newer</span> force load newer toots in current timeline</li>
-    <li><span class="highlight">:preferences</span> update your profile and some other settings</li>
-    <li><span class="highlight">:profile</span> go to your profile</li>
-    <li><span class="highlight">:proportions</span> [int] [int], where the first integer is the list and the other content, e.g. :proportions 1 3</li>
-    <li><span class="highlight">:refetch</span> refetches the current item</li>
-    <li><span class="highlight">:requests</span> see following requests</li>
-    <li><span class="highlight">:saved</span> alias for bookmarks</li>
-    <li><span class="highlight">:stick-to-top</span> toggle the stick-to-top setting</li>
-    <li><span class="highlight">:tag</span> followed by the hashtag e.g. :tag linux</li>
-    <li><span class="highlight">:tags</span> list of followed tags</li>
-    <li><span class="highlight">:unfollow-tag</span> followed by the hashtag to unfollow e.g. :unfollow-tag tut</li>
-    <li><span class="highlight">:user</span> followed by a username e.g. :user rasmus to narrow a search include the instance like this :user rasmus@mastodon.acc.sunet.se</li>
-    <li><span class="highlight">:window</span> switch window by index (zero indexed) e.g. :window 0 for the first window</li>
+<li><span class="highlight">:quit</span> = Exit tut</li>
+<li><span class="highlight">:q</span> = Shorter form of former command</li>
+<li><span class="highlight">:timeline</span> home|local|federated|direct|notifications|mentions|favorited|special-all|special-boosts|special-replies = Open selected timeline</li>
+<li><span class="highlight">:tl</span> h|l|f|d|n|m|fav|sa|sb|sr = Shorter form of former command</li>
+<li><span class="highlight">:blocking</span> = Lists users that you have blocked</li>
+<li><span class="highlight">:boosts</span> = Lists users that have boosted the toot</li>
+<li><span class="highlight">:bookmarks</span> = List all your bookmarks</li>
+<li><span class="highlight">:clear-notifications</span> = Remove all of your notifications</li>
+<li><span class="highlight">:close-window</span> = Closes the current window, including all the timelines in said window</li>
+<li><span class="highlight">:compose</span> = Compose a new toot</li>
+<li><span class="highlight">:edit</span> = Edit one of your toots</li>
+<li><span class="highlight">:favorited</span> = Lists toots  you&#39;ve favorited</li>
+<li><span class="highlight">:favorites</span> = Lists users that favorited the toot</li>
+<li><span class="highlight">:follow-tag</span> &lt;tag&gt; = Follow a hashtag named &lt;tag&gt;</li>
+<li><span class="highlight">:followers</span> = List of people the account are following. It only works on profiles</li>
+<li><span class="highlight">:following</span> = List of people follwing the account. It only works on profiles</li>
+<li><span class="highlight">:help</span> = Show help for how to use tut</li>
+<li><span class="highlight">:h</span> = Shorter form of former command</li>
+<li><span class="highlight">:history</span> = Show edits of a toot</li>
+<li><span class="highlight">:lists</span> = Show a list of your lists</li>
+<li><span class="highlight">:list-placement</span> top|right|bottom|left = Place the list in choosen placement</li>
+<li><span class="highlight">:list-split</span> row|column = Split the timelines in window by row or column</li>
+<li><span class="highlight">:move-window</span> left|right|up|down|home|end = Moves the window in choosen direction</li>
+<li><span class="highlight">:mv</span> l|r|u|d|h|e = Shorter form of former command</li>
+<li><span class="highlight">:muting</span> = Lists users that you&#39;ve muted</li>
+<li><span class="highlight">:newer</span> = Force load newer toots in current timeline</li>
+<li><span class="highlight">:preferences</span> = Update your profile and some other settings</li>
+<li><span class="highlight">:profile</span> = Go to your profile</li>
+<li><span class="highlight">:proportions</span> [int] [int] = Sets the proportions of the windows and the content. The first integer is your windows and the other for content, e.g. :proportions 1 3</li>
+<li><span class="highlight">:refetch</span> = Refetches the current item that you&#39;re viewing. Can be used to update poll results.</li>
+<li><span class="highlight">:saved</span> = Alias for bookmarks</li>
+<li><span class="highlight">:stick-to-top</span> = Toggle the stick-to-top setting that always shows the latest toot in all timelines</li>
+<li><span class="highlight">:tag</span> &lt;tag&gt; = Shows toots tagged with &lt;tag&gt;, e.g. :tag linux. You can input multiple tags if you want to show them in the same timeline</li>
+<li><span class="highlight">:tags</span> = List of tags that you&#39;re following</li>
+<li><span class="highlight">:unfollow-tag</span> &lt;tag&gt; = Unfollow the hashtag named &lt;tag&gt;, e.g. :unfollow-tag tut</li>
+<li><span class="highlight">:user</span> &lt;username&gt; = Search for users named &lt;username&gt;, e.g. :user rasmus. To narrow a search include the instance like this :user rasmus@mastodon.acc.sunet.se</li>
+<li><span class="highlight">:window</span> &lt;int&gt; = Switch window by index (zero indexed) e.g. :window 0 for the left/top window</li>
 </ul>
 {{end}}

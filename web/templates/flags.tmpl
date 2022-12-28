@@ -2,15 +2,15 @@
 <p>Here is a list of flags you can use in tut.
 You use them by adding them like this <span class="highlight">tut --new user</span></p>
 <ul class="nolist">
-    <li><span class="highlight">--new-user -n</span> = add one more user to tut</li>
-    <li><span class="highlight">--user &lt;name&gt; -u &lt;name&gt;</span> = login directly to user named &lt;name&gt;</li>
-    <ul class="nolist">
-		<li>If two users are named the same. Use full name like tut@fosstodon.org</li>
-    </ul>
-    <li><span class="highlight">--config &lt;path&gt; -c &lt;path&gt;</span> = load config.ini from &lt;path&gt;</li>
-    <li><span class="highlight">--config-dir &lt;path&gt; -d &lt;path&gt;</span> = load all config from &lt;path&gt;</li>
-    <li><span class="highlight">--help -h</span> = show help message</li>
-    <li><span class="highlight">--version -v</span> = show version of tut</li>
+<li><span class="highlight">-h --help</span> = show help message</li>
+<li><span class="highlight">-v --version</span> = show the version number</li>
+<li><span class="highlight">-n --new-user</span> = add one more user to tut</li>
+<li><span class="highlight">-c &lt;path&gt; --config &lt;path&gt;</span> = load config.ini from &lt;path&gt;</li>
+<li><span class="highlight">-d &lt;path&gt; --config-dir &lt;path&gt;</span> = load all config from &lt;path&gt;</li>
+<li><span class="highlight">-u &lt;name&gt; --user &lt;name&gt;</span> = login directly to user named &lt;name&gt;</li>
+<ul class="nolist">
+<li>If two users are named the same, use full name like tut@fosstodon.org</li>
+</ul>
 </ul>
 <p>If you don't want to set <span class="highlight">--config</span> or <span class="highlight">--config-dir</span> everytime you can set
 the environment variables <span class="highlight">TUT_CONF</span> and <span class="highlight">TUT_CONF_DIR</span> instead.</p>
