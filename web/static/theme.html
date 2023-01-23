@@ -34,6 +34,7 @@
             --button-color-two: #272822;
             --timeline-name-background: #272822;
             --timeline-name-text: #808080;
+            --command-text: #f8f8f2;
         }
 
         body {
@@ -145,6 +146,10 @@
             color: var(--status-bar-view-text) !important;
         }
 
+        #cmdbar {
+            color: var(--command-text);
+        }
+
         #modal {
             text-align: center;
             padding: 2em 0;
@@ -175,7 +180,7 @@
         }
 
         .cbarErr {
-            color: var(--warning-text);
+            color: var(--warning-text) !important;
         }
 
         #colorPicker p {
@@ -278,8 +283,8 @@
             <p>Just now it only works with HEX-colors.</p>
             <div id="colorPicker"></div>
             <h4>Output</h4>
-            <p>You'll have to paste the output to a new file e.g. foo.ini located in ~/.config/tut/themes/foo.ini and
-                then set theme=foo in ~/.config/tut/config.ini</p>
+            <p>You'll have to paste the output to a new file e.g. foo.toml located in ~/.config/tut/themes/foo.toml and
+                then set theme=foo in ~/.config/tut/config.toml</p>
             <pre id="output"></pre>
             <p>
                 <a href="/" title="Go back to main site">Go back to main site.</a>
@@ -337,7 +342,8 @@
             ["bco", "#f92672", "button-color-one"],
             ["bct", "#272822", "button-color-two"],
             ["tnb", "#272822", "timeline-name-background"],
-            ["tnt", "#808080", "timeline-name-text"]
+            ["tnt", "#808080", "timeline-name-text"],
+            ["cmdt", "#f8f8f2", "command-text"]
         ];
 
         let root = document.documentElement;
@@ -377,7 +383,7 @@
             output.innerHTML = "";
             themeName.forEach((arr, i) => {
                 let val = document.getElementById(`${arr[0]}-c`).value;
-                output.innerHTML += `${arr[2]}=${val}\n`;
+                output.innerHTML += `${arr[2]}="${val}"\n`;
             });
         }
     </script>

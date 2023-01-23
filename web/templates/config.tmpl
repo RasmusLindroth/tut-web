@@ -2,12 +2,12 @@
 <p>Tut is configurable, so you can change things like the colors, the default timeline, 
 what image viewer to use and some more.</span>
 
-<p>You find it in <span class="highlight">XDG_CONFIG_HOME/tut/config.ini</span> on Linux which usally equals to <span class="highlight">~/.config/tut/config.ini.</span>.
+<p>You find it in <span class="highlight">XDG_CONFIG_HOME/tut/config.toml</span> on Linux which usally equals to <span class="highlight">~/.config/tut/config.toml.</span>.
 If you don't run Linux it will use the path of <a href="https://github.com/golang/go/blob/7dc9fcb13de7bb20b11f6a526865545cc9142c2c/src/os/file.go#L455-L461" title="os#UserConfigDir">os#UserConfigDir</a>.
 But if you move the tut folder to <span class="highlight">XDG_CONFIG_HOME/tut/</span> and have set the environment variable <span class="highlight">$XDG_CONFIG_HOME</span> 
 it will look there instead of the standard place.</p>
 
-<p>In the git-repo you can find a <a href="https://github.com/RasmusLindroth/tut/blob/master/config.example.ini" title="example.config.ini" rel="noopener">example.config.ini</a>.
+<p>In the git-repo you can find a <a href="https://github.com/RasmusLindroth/tut/blob/master/config.example.toml" title="example.config.toml" rel="noopener">example.config.toml</a>.
 It contains the default values. And can be good to look at for reference.</p>
 
 <h2>General config</h2>
@@ -338,11 +338,11 @@ valid: blocking, boosts, clear-notifications, close-pane, compose, edit, favorit
 <p>You can also use xrdb colors like this xrdb:color1 The program will use colors prefixed with an * first then look for URxvt or XTerm if it can't find any color prefixed with an asterisk. If you don't want tut to guess the prefix you can set the prefix yourself. If the xrdb color can't be found a preset color will be used. You'll have to set theme="none" for this to work.</p>
 
 <p><span class="conf" id="theme">theme</span></p>
-<p>The theme to use. You can use some themes that comes bundled with tut. Check out the themes available on the URL below. If a theme is named nord.ini you just write theme="nord".</p>
+<p>The theme to use. You can use some themes that comes bundled with tut. Check out the themes available on the URL below. If a theme is named nord.toml you just write theme="nord".</p>
 <p></p>
 <p><a href="https://github.com/RasmusLindroth/tut/tree/master/config/themes" title="themes for tut" rel="noopener">./tut/config/themes</a></p>
 <p></p>
-<p>You can also create a theme file in your config directory e.g. ~/.config/tut/themes/foo.ini and then set theme=foo.</p>
+<p>You can also create a theme file in your config directory e.g. ~/.config/tut/themes/foo.toml and then set theme=foo.</p>
 <p></p>
 <p>If you want to use your own theme but don't want to create a new file, set theme="none" and then you can create your own theme below.</p>
 <p></p>
