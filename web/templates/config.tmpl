@@ -12,53 +12,21 @@ It contains the default values. And can be good to look at for reference.</p>
 
 <h2>General config</h2>
 <p>Section <span class="highlight">[general]</span> in your config</p>
+<p><span class="conf" id="editor">editor</span></p>
+<p>What editor to use. TUT_USE_INTERNAL will use the editor that comes with tut. If you want you can set this to $EDITOR to use your environment variable or vim if you want to specify the program directly.</p>
+<p>default="TUT_USE_INTERNAL"</p>
 <p><span class="conf" id="confirmation">confirmation</span></p>
-<p>Shows a confirmation view before actions such as favorite, delete toot, boost etc.</p>
+<p>You need to press yes in a confirmation dialog before favoriting, boosting, etc.</p>
 <p>default=true</p>
 <p><span class="conf" id="mouse-support">mouse-support</span></p>
-<p>Enable support for using the mouse in tut to select items.</p>
+<p>Enable mouse support in tut.</p>
 <p>default=false</p>
-<p><span class="conf" id="timelines">timelines</span></p>
-<p>Timelines adds windows of feeds. You can customize the number of feeds, what they should show and the key to activate them.</p>
-<p></p>
-<p>Available timelines: home, direct, local, federated, special, bookmarks, saved, favorited, notifications, lists, mentions, tag</p>
-<p></p>
-<p>The one named special are the home timeline with only boosts and/or replies.</p>
-<p></p>
-<p>Tag is special as you need to add the tag after, see the example below.</p>
-<p></p>
-<p>The syntax is:</p>
-<p>timelines=feed,[name],[keys...],[showBoosts],[showReplies]</p>
-<p></p>
-<p>Tha values in brackets are optional. You can see the syntax for keys under the [input] section.</p>
-<p></p>
-<p>showBoosts and showReplies must be formated as bools. So either true or false. They always defaults to true.</p>
-<p></p>
-<p>Some examples:</p>
-<p></p>
-<p>home timeline with the name Home</p>
-<p>timelines=home,Home</p>
-<p></p>
-<p>local timeline with the name Local and it gets focus when you press 2. It will also hide boosts in the timeline, but show toots that are replies.</p>
-<p>timelines=local,Local,'2',false,true</p>
-<p></p>
-<p>notification timeline with the name [N]otifications and it gets focus when you press n or N</p>
-<p>timelines=notifications,[N]otifications,'n','N'</p>
-<p></p>
-<p>tag timeline for #linux with the name Linux and it gets focus when you press</p>
-<p>timelines=tag linux,Linux,"F2"</p>
-<p></p>
-<p></p>
-<p>If you don't set any timelines it will default to this:</p>
-<p>timelines=home</p>
-<p>timelines=notifications,[N]otifications,'n','N'</p>
-<p></p>
 <p><span class="conf" id="date-format">date-format</span></p>
-<p>The date format to be used. See <a href="https://godoc.org/time#Time.Format" title="Go Time.Format" rel="noopener">Go time#Time.Format</a></p>
-<p>default=2006-01-02 15:04</p>
-<p><span class="conf" id="date-today-format">date-today-format</span></p>
-<p>Format for dates the same day. See <a href="#date-format" title="date-format">date-format</a> for more info.</p>
-<p>default=15:04</p>
+<p>The date format to be used. See <a href="https://pkg.go.dev/time#pkg-constants" title="Go Time.Constants" rel="noopener">Go time#Constants</a></p>
+<p>default="2006-01-02 15:04"</p>
+<p><span class="conf" id="date-tody-format">date-tody-format</span></p>
+<p>Format for dates the same day. See date-format for more info.</p>
+<p>default="15:04"</p>
 <p><span class="conf" id="date-relative">date-relative</span></p>
 <p>This displays relative dates instead for statuses that are one day or older the output is 1y2m1d (1 year 2 months and 1 day)</p>
 <p></p>
@@ -66,508 +34,1018 @@ It contains the default values. And can be good to look at for reference.</p>
 <p>-1     = don't use relative dates</p>
 <p> 0     = always use relative dates, except for dates < 1 day</p>
 <p> 1 - ∞ = number of days to use relative dates</p>
-<p></p>
-<p>Example: date-relative=28 will display a relative date for toots that are between 1-28 days old. Otherwhise it will use the short or long format.</p>
+<p>				</p>
+<p>Value: 28 will display a relative date for toots that are between 1-28 days old. Otherwhise it will use the short or long format.</p>
 <p>default=-1</p>
 <p><span class="conf" id="max-width">max-width</span></p>
-<p>The max width of text before it wraps when displaying toots.</p>
-<p>0 = no restriction.</p>
+<p>The max with of text before it wraps when displaying a toot.</p>
 <p>default=0</p>
 <p><span class="conf" id="list-placement">list-placement</span></p>
-<p>Where do you want the list of toots to be placed?</p>
-<p>Valid values: left, right, top, bottom.</p>
-<p>default=left</p>
+<p>The placement of your panes.</p>
+
+valid: left, right, top, bottom
+
+<p>default="left"</p>
 <p><span class="conf" id="list-split">list-split</span></p>
-<p>If you have <a href="#notification-feed" title="notification-feed">notification-feed</a> set to true you can display it under the main list of toots (row) or place it to the right of the main list of toots (column).</p>
-<p>default=row</p>
+<p>How should panes be split?</p>
+
+valid: row, column
+
+<p>default="row"</p>
 <p><span class="conf" id="list-proportion">list-proportion</span></p>
-<p>You can change the proportions of the list view in relation to the content view list-proportion=1 and content-proportoin=3 will result in the content taking up 3 times more space.</p>
-<p>Must be n > 0</p>
+<p>The proportion of panes vs. content. 1 on this and 3 on content below results in content taking up 3 times more space.</p>
 <p>default=1</p>
 <p><span class="conf" id="content-proportion">content-proportion</span></p>
-<p>See <a href="#list-proportion" title="list-proportion">list-proportion</a> for more info</p>
+<p>See previous.</p>
 <p>default=2</p>
 <p><span class="conf" id="notifications-to-hide">notifications-to-hide</span></p>
-<p>Hide notifications of this type. If you have multiple you separate them with a comma. Valid types: mention, status, boost, follow, follow_request, favorite, poll, edit.</p>
+<p>Hide notifications of this type in your notification timelines.</p>
+
+valid: mention, status, boost, follow, follow_request, favorite, poll, edit
+
+<p>default=[]</p>
 <p><span class="conf" id="quote-reply">quote-reply</span></p>
-<p>If you always want to quote original message when replying.</p>
+<p>Always include a quote of the message you're replying to.</p>
 <p>default=false</p>
-<p><span class="conf" id="char-limit">char-limit</span></p>
-<p>If you're on an instance with a custom character limit you can set it here.</p>
-<p>default=500</p>
 <p><span class="conf" id="show-icons">show-icons</span></p>
-<p>If you want to show icons in the list of toots.</p>
+<p>If you want to show icons in timelines.</p>
 <p>default=true</p>
 <p><span class="conf" id="short-hints">short-hints</span></p>
-<p>If you've learnt all the shortcut keys you can remove the help text and only show the key in tui. So it gets less cluttered.</p>
+<p>If you only want to you the letter of keys instead of the full hint.</p>
 <p>default=false</p>
 <p><span class="conf" id="show-filter-phrase">show-filter-phrase</span></p>
 <p>If you want to display the filter that filtered a toot.</p>
 <p>default=true</p>
 <p><span class="conf" id="show-help">show-help</span></p>
-<p>If you want to show a message in the cmdbar on how to access the help text.</p>
+<p>Display a message in the commandbar on how to access the help text.</p>
 <p>default=true</p>
 <p><span class="conf" id="stick-to-top">stick-to-top</span></p>
-<p>If you always want tut to jump to the newest post. May ruin your reading experience.</p>
+<p>Always jump to the newest post. May ruin your reading experience.</p>
 <p>default=false</p>
 <p><span class="conf" id="show-boosted-user">show-boosted-user</span></p>
-<p>If you want to display the username of the person being boosted instead of the person that boosted.</p>
+<p>Display the username of the person being boosted insted of the person that boosted.</p>
 <p>default=false</p>
+<p><span class="conf" id="commands-in-new-pane">commands-in-new-pane</span></p>
+<p>Open a new pane when you run a command like :timeline home.</p>
+<p>default=true</p>
+<p><span class="conf" id="dynamic-timeline-name">dynamic-timeline-name</span></p>
+<p>Set a default name for the timeline if the name is empty. So if you run :tag linux the title of the pane will be set to #linux</p>
+<p>default=true</p>
 <p><span class="conf" id="terminal-title">terminal-title</span></p>
 <p>0 = No terminal title</p>
 <p>1 = Show title in terminal and top bar</p>
-<p>2 = Only show terminal title, and no top bar in tut.</p>
+<p>2 = Only show terminal title, and no top bar in tut</p>
+<p>3 = No terminal title and no top bar in tut.</p>
+
+valid: 0, 1, 2, 4
+
 <p>default=0</p>
 <p><span class="conf" id="redraw-ui">redraw-ui</span></p>
-<p>If you don't want the whole UI to update, and only the text content you can set this option to true. This will lead to some artifacts being left on the screen when emojis are present. But it will keep the UI from flashing on every single toot in some terminals.</p>
+<p>If you don't want the whole UI to update, and only update the text content you can disable this. This will lead to some artifacts being left on the screen when emojis are present.</p>
 <p>default=true</p>
 <p><span class="conf" id="leader-key">leader-key</span></p>
-<p>The leader is used as a shortcut to run commands as you can do in Vim. By default this is disabled and you enable it by setting a leader-key. It can only consist of one char and I like to use comma as leader key. So to set it you write leader-key=,</p>
+<p>The leader is used as a shortcut to run commands as you can do in Vim. By default this is disabled and you enable it by setting a key here. It can only consist of one char, so set it to something like a comma.</p>
+<p>default=""</p>
 <p><span class="conf" id="leader-timeout">leader-timeout</span></p>
 <p>Number of milliseconds before the leader command resets. So if you tap the leader-key by mistake or are to slow it empties all the input after X milliseconds.</p>
 <p>default=1000</p>
-<p><span class="conf" id="leader-action">leader-action</span></p>
-<p>You set actions for the leader-key with one or more leader-action. It consists of two parts first the action then the shortcut. And they're separated by a comma.</p>
-<p></p>
-<p>Available commands: blocking, bookmarks, boosts, clear-notifications, close-window, compose, direct, edit, favorited, favorites, federated, followers, following, history, home, list-placement, list-split, lists, local, mentions, move-window-left, move-window-right, move-window-up, move-window-down, move-window-home, move-window-end, muting, newer, notifications, preferences, profile, proportions, refetch, saved, special-all, special-boosts, special-replies, stick-to-top, switch, tag, tags, window</p>
-<p></p>
-<p>The ones named special-* are the home timeline with only boosts and/or replies. All contains both, -boosts only boosts and -replies only replies.</p>
-<p></p>
+<h2>Timelines config</h2>
+<p>Section <span class="highlight">[[general.timelines]]</span> in your config. You can have multiple of them.</p>
+<p>Timelines adds panes of feeds. You can customize the number of feeds, what they should show and the key to activate them.</p>
+
+<p>Example:</p>
+<p>[[general.timelines]]</p>
+<p>name="home"</p>
+<p>type="home"</p>
+<p>hide-boosts=false</p>
+<p>hide-replies=false</p>
+<p>[[general.timelines]]</p>
+<p>name="Notifications"</p>
+<p>type="notifications"</p>
+<p>keys=["n", "N"]</p>
+<p>closed=true</p>
+<p>on-creation-closed="new-pane"</p>
+<p>on-focus="focus-self"</p>
+
+<p><span class="conf" id="name">name</span></p>
+<p>The name to display above the timeline</p>
+<p>default=""</p>
+<p><span class="conf" id="type">type</span></p>
+<p>The type of the timeline</p>
+
+valid: home, direct, local, federated, bookmarks, saved, favorited, notifications, lists, mentions, tag
+
+<p>default=""</p>
+<p><span class="conf" id="data">data</span></p>
+<p>Used for the tag type, so here you set the tag. If you have multiple you seperate them with a space.</p>
+<p>default=""</p>
+<p><span class="conf" id="keys">keys</span></p>
+<p>A list of keys to give this timeline focus. See under the input section to learn more about keys.</p>
+<p>default=[]</p>
+<p><span class="conf" id="special-keys">special-keys</span></p>
+<p>A list of special-keys to give this timeline focus. See under the input section to learn more about special-keys.</p>
+<p>default=[]</p>
+<p><span class="conf" id="shortcut">shortcut</span></p>
+<p>A shortcut to give this timeline focus with your leader-key + this shortcut.</p>
+<p>default=""</p>
+<p><span class="conf" id="hide-boosts">hide-boosts</span></p>
+<p>Hide boosts in this timeline.</p>
+<p>default="false"</p>
+<p><span class="conf" id="hide-replies">hide-replies</span></p>
+<p>Hide replies in this timeline.</p>
+<p>default="false"</p>
+<p><span class="conf" id="closed">closed</span></p>
+<p>Don't open this timeline when you start tut. Use your keys or shortcut to open it.</p>
+<p>default="false"</p>
+<p><span class="conf" id="on-creation-closed">on-creation-closed</span></p>
+<p>Don't open this timeline when you start tut. Use your keys or shortcut to open it.</p>
+
+valid: new-pane, current-pane
+
+<p>default="new-pane"</p>
+<p><span class="conf" id="on-focus">on-focus</span></p>
+<p>Don't open this timeline when you start tut. Use your keys or shortcut to open it.</p>
+
+valid: focus-pane, focus-self
+
+<p>default="focus-pane"</p>
+<h2>Leader-Actions config</h2>
+<p>Section <span class="highlight">[[general.leader-actions]]</span> in your config. You can have multiple of them.</p>
+<p>You set actions leader-key with one or more leader-actions.</p>
 <p>The shortcuts are up to you, but keep them quite short and make sure they don't collide. If you have one shortcut that is "f" and an other one that is "fav", the one with "f" will always run and "fav" will never run. </p>
-<p></p>
-<p>Some special leaders:</p>
-<p>tag is special as you need to add the tag after, e.g. tag linux</p>
-<p>window is special as it's a shortcut for switching between the timelines you've set under general and they are zero indexed. window 0 = your first timeline, window 1 = your second and so on.</p>
+<p>Some special actions that requires data to be set:</p>
+<p>pane is special as it's a shortcut for switching between the panes you've set under general and they are zero indexed. pane 0 = your first timeline, pane 1 = your second and so on.</p>
 <p>list-placement as it takes the argument top, right, bottom or left</p>
 <p>list-split as it takes the argument column or row</p>
 <p>proportions takes the arguments [int] [int], where the first integer is the list and the other content, e.g. proportions 1 3. See list-proportion above for more information.</p>
-<p>switch let's you go to a timeline if it already exists, if it doesn't it will open the timeline in a new window. The syntax is almost the same as in timelines= and is displayed under the examples.</p>
-<p></p>
-<p>Some examples:</p>
-<p>leader-action=local,lo</p>
-<p>leader-action=lists,li</p>
-<p>leader-action=federated,fed</p>
-<p>leader-action=direct,d</p>
-<p>leader-action=history,h</p>
-<p>leader-action=tag linux,tl</p>
-<p>leader-action=window 0,h</p>
-<p>leader-action=list-placement bottom,b</p>
-<p>leader-action=list-split column,c</p>
-<p>leader-action=proportions 1 3,3</p>
-<p></p>
-<p>Syntax for switch:</p>
-<p>leader-action=switch feed,shortcut,[name],[showBoosts],[showReplies]</p>
-<p>showBoosts can be either true or false and they are both optional. Here are some examples:</p>
-<p></p>
-<p>leader-action=switch home,h,false,true</p>
-<p>leader-action=switch tag tut,tt</p>
-<p></p>
+
+<p>Example:</p>
+<p>[[general.leader-actions]]</p>
+<p>type="close-pane"</p>
+<p>shortcut="q"</p>
+<p>[[general.leader-actions]]</p>
+<p>type="list-split"</p>
+<p>data="row"</p>
+<p>shortcut="r"</p>
+<p>[[general.leader-actions]]</p>
+<p>type="list-split"</p>
+<p>data="column"</p>
+<p>shortcut="c"</p>
+
+<p><span class="conf" id="type">type</span></p>
+<p>The action you want to run.</p>
+
+valid: blocking, boosts, clear-notifications, close-pane, compose, edit, favorited, favorites, followers, following, history, list-placement, list-split, lists, move-pane-left, move-pane-right, move-pane-up, move-pane-down, move-pane-home, move-pane-end, muting, newer, pane, preferences, profile, proportions, refetch, stick-to-top, tags
+
+<p>default=""</p>
+<p><span class="conf" id="data">data</span></p>
+<p>Data to pass to the action.</p>
+<p>default=""</p>
+<p><span class="conf" id="shortcut">shortcut</span></p>
+<p>A shortcut to run this action with your leader-key + this shortcut.</p>
+<p>default=""</p>
 <h2>Media config</h2>
 <p>Section <span class="highlight">[media]</span> in your config</p>
-<p><span class="conf" id="image-viewer">image-viewer</span></p>
-<p>Your image viewer.</p>
-<p>default=xdg-open</p>
-<p><span class="conf" id="image-terminal">image-terminal</span></p>
-<p>Open the image viewer in the same terminal as toot. Only for terminal based viewers.</p>
-<p>default=false</p>
-<p><span class="conf" id="image-single">image-single</span></p>
-<p>If images should open one by one e.g. "imv image.png" multiple times. If set to false all images will open at the same time like this "imv image1.png image2.png image3.png". Not all image viewers support this, so try it first.</p>
+<p><span class="conf" id="delete-temp-files">delete-temp-files</span></p>
+<p>Media files will be removed directly after they've been opened. Some programs doesn't like this, so if your media doesn't open, try set this to false. Tut will remove all files once you close the program.</p>
 <p>default=true</p>
-<p><span class="conf" id="image-reverse">image-reverse</span></p>
-<p>If you want to open the images in reverse order. In some image viewers this will display the images in the "right" order.</p>
+<h2>Image config</h2>
+<p>Section <span class="highlight">[media.image]</span> in your config</p>
+<p><span class="conf" id="program">program</span></p>
+<p>The program to open images. TUT_OS_DEFAULT equals xdg-open on Linux, open on MacOS and start on Windows.</p>
+<p>default="TUT_OS_DEFAULT"</p>
+<p><span class="conf" id="args">args</span></p>
+<p>Arguments to pass to the program.</p>
+<p>default=""</p>
+<p><span class="conf" id="terminal">terminal</span></p>
+<p>If the program runs in the terminal set this to true.</p>
 <p>default=false</p>
-<p><span class="conf" id="video-viewer">video-viewer</span></p>
-<p>Your video viewer.</p>
-<p>default=xdg-open</p>
-<p><span class="conf" id="video-terminal">video-terminal</span></p>
-<p>Open the video viewer in the same terminal as toot. Only for terminal based viewers.</p>
-<p>default=false</p>
-<p><span class="conf" id="video-single">video-single</span></p>
-<p>If videos should open one by one. See <a href="#image-single" title="image-single">image-single</a>.</p>
+<p><span class="conf" id="single">single</span></p>
+<p>If the program should be called multiple times when there is multiple files. If set to false all files will be passed as an argument, but not all programs support this.</p>
 <p>default=true</p>
-<p><span class="conf" id="video-reverse">video-reverse</span></p>
-<p>If you want your videos in reverse order. In some video apps this will play the files in the "right" order.</p>
+<p><span class="conf" id="reverse">reverse</span></p>
+<p>If the files should be passed in reverse order. This will make some programs display the files in the correct order.</p>
 <p>default=false</p>
-<p><span class="conf" id="audio-viewer">audio-viewer</span></p>
-<p>Your audio viewer.</p>
-<p>default=xdg-open</p>
-<p><span class="conf" id="audio-terminal">audio-terminal</span></p>
-<p>Open the audio viewer in the same terminal as toot. Only for terminal based viewers.</p>
+<h2>Video config</h2>
+<p>Section <span class="highlight">[media.video]</span> in your config</p>
+<p><span class="conf" id="program">program</span></p>
+<p>The program to open videos. TUT_OS_DEFAULT equals xdg-open on Linux, open on MacOS and start on Windows.</p>
+<p>default="TUT_OS_DEFAULT"</p>
+<p><span class="conf" id="args">args</span></p>
+<p>Arguments to pass to the program.</p>
+<p>default=""</p>
+<p><span class="conf" id="terminal">terminal</span></p>
+<p>If the program runs in the terminal set this to true.</p>
 <p>default=false</p>
-<p><span class="conf" id="audio-single">audio-single</span></p>
-<p>If audio should open one by one. See <a href="#image-single" title="image-single">image-single</a>.</p>
+<p><span class="conf" id="single">single</span></p>
+<p>If the program should be called multiple times when there is multiple files. If set to false all files will be passed as an argument, but not all programs support this.</p>
 <p>default=true</p>
-<p><span class="conf" id="audio-reverse">audio-reverse</span></p>
-<p>If you want to play the audio files in reverse order. In some audio apps this will play the files in the "right" order.</p>
+<p><span class="conf" id="reverse">reverse</span></p>
+<p>If the files should be passed in reverse order. This will make some programs display the files in the correct order.</p>
 <p>default=false</p>
-<p><span class="conf" id="link-viewer">link-viewer</span></p>
-<p>Your web browser.</p>
-<p>default=xdg-open</p>
-<p><span class="conf" id="link-terminal">link-terminal</span></p>
-<p>Open the browser in the same terminal as toot. Only for terminal based browsers.</p>
+<h2>Audio config</h2>
+<p>Section <span class="highlight">[media.audio]</span> in your config</p>
+<p><span class="conf" id="program">program</span></p>
+<p>The program to open audio. TUT_OS_DEFAULT equals xdg-open on Linux, open on MacOS and start on Windows.</p>
+<p>default="TUT_OS_DEFAULT"</p>
+<p><span class="conf" id="args">args</span></p>
+<p>Arguments to pass to the program.</p>
+<p>default=""</p>
+<p><span class="conf" id="terminal">terminal</span></p>
+<p>If the program runs in the terminal set this to true.</p>
 <p>default=false</p>
-<h2>Open-Custom config</h2>
-<p>Section <span class="highlight">[open-custom]</span> in your config</p>
-<p>This sections allows you to set up to five custom programs to open URLs with. If the url points to an image, you can set c1-name to img and c1-use to imv. If the program runs in a terminal and you want to run it in the same terminal as tut. Set cX-terminal to true. The name will show up in the UI, so keep it short so all five fits.</p>
-<p>c1-name=name</p>
-<p>c1-use=program</p>
-<p>c1-terminal=false</p>
-<p>c2-name=name</p>
-<p>c2-use=program</p>
-<p>c2-terminal=false</p>
-<p>c3-name=name</p>
-<p>c3-use=program</p>
-<p>c3-terminal=false</p>
-<p>c4-name=name</p>
-<p>c4-use=program</p>
-<p>c4-terminal=false</p>
-<p>c5-name=name</p>
-<p>c5-use=program</p>
-<p>c5-terminal=false</p>
-
-<h2>Open-Pattern config</h2>
-<p>Section <span class="highlight">[open-pattern]</span> in your config</p>
-<p>Here you can set your own glob patterns for opening matching URLs in the program you want them to open up in. You could for example open Youtube videos in your video player instead of your default browser.</p>
-<p>You must name the keys foo-pattern, foo-use and foo-terminal, where use is the program that will open up the URL. To see the syntax for glob pattern you can follow this URL <a href="https://github.com/gobwas/glob#syntax" rel="noopener" title"gobwas/glob#syntax">https://github.com/gobwas/glob#syntax</a>. foo-terminal is if the program runs in the terminal and should open in the same terminal as tut itself.</p>
-<p>Example for youtube.com and youtu.be to open up in mpv instead of the browser.</p>
-<p>y1-pattern=*youtube.com/watch*</p>
-<p>y1-use=mpv</p>
-<p>y1-terminal=false</p>
-<p>y2-pattern=*youtu.be/*</p>
-<p>y2-use=mpv</p>
-<p>y2-terminal=false</p>
-
+<p><span class="conf" id="single">single</span></p>
+<p>If the program should be called multiple times when there is multiple files. If set to false all files will be passed as an argument, but not all programs support this.</p>
+<p>default=true</p>
+<p><span class="conf" id="reverse">reverse</span></p>
+<p>If the files should be passed in reverse order. This will make some programs display the files in the correct order.</p>
+<p>default=false</p>
+<h2>Link config</h2>
+<p>Section <span class="highlight">[media.link]</span> in your config</p>
+<p><span class="conf" id="program">program</span></p>
+<p>The program to open links. TUT_OS_DEFAULT equals xdg-open on Linux, open on MacOS and start on Windows.</p>
+<p>default="TUT_OS_DEFAULT"</p>
+<p><span class="conf" id="args">args</span></p>
+<p>Arguments to pass to the program.</p>
+<p>default=""</p>
+<p><span class="conf" id="terminal">terminal</span></p>
+<p>If the program runs in the terminal set this to true.</p>
+<p>default=false</p>
 <h2>Desktop-Notification config</h2>
 <p>Section <span class="highlight">[desktop-notification]</span> in your config</p>
 <p><span class="conf" id="followers">followers</span></p>
-<p>Notification when someone follows you.</p>
+<p>Enable notifications when someone follows you.</p>
 <p>default=false</p>
 <p><span class="conf" id="favorite">favorite</span></p>
-<p>Notification when someone favorites one of your toots.</p>
+<p>Enable notifications when one of your toots gets favorited.</p>
 <p>default=false</p>
 <p><span class="conf" id="mention">mention</span></p>
-<p>Notification when someone mentions you.</p>
+<p>Enable notifications  when someone mentions you.</p>
 <p>default=false</p>
 <p><span class="conf" id="update">update</span></p>
-<p>Notification when someone edits their toot.</p>
+<p>Enable notifications when a post you have interacted with gets edited.</p>
 <p>default=false</p>
 <p><span class="conf" id="boost">boost</span></p>
-<p>Notification when someone boosts one of your toots.</p>
+<p>Enable notifications when one of your toots gets boosted.</p>
 <p>default=false</p>
 <p><span class="conf" id="poll">poll</span></p>
-<p>Notification of poll results.</p>
+<p>Enable notifications when a poll ends.</p>
 <p>default=false</p>
 <p><span class="conf" id="posts">posts</span></p>
-<p>Notification when there is new posts in current timeline.</p>
+<p>Enable notifications for new posts.</p>
+<p>default=false</p>
+<h2>Open-Custom config</h2>
+<p>Section <span class="highlight">[open-custom]</span> in your config</p>
+<h2>Programs config</h2>
+<p>Section <span class="highlight">[[open-custom.programs]]</span> in your config. You can have multiple of them.</p>
+<p><span class="conf" id="program">program</span></p>
+<p>The program to open the file with.</p>
+<p>default=""</p>
+<p><span class="conf" id="args">args</span></p>
+<p>Arguments to pass to the program.</p>
+<p>default=""</p>
+<p><span class="conf" id="terminal">terminal</span></p>
+<p>If the program runs in the terminal set this to true.</p>
+<p>default=false</p>
+<p><span class="conf" id="hint">hint</span></p>
+<p>What should the key hint in tut be for this program. See under the input section to learn more about hint.</p>
+<p>default=""</p>
+<p><span class="conf" id="keys">keys</span></p>
+<p>A list of keys to to open files with this program. See under the input section to learn more about keys.</p>
+<p>default=[]</p>
+<p><span class="conf" id="special-keys">special-keys</span></p>
+<p>A list of special-keys to open files with this program. See under the input section to learn more about special-keys.</p>
+<p>default=[]</p>
+<h2>Open-Pattern config</h2>
+<p>Section <span class="highlight">[open-pattern]</span> in your config</p>
+<h2>Programs config</h2>
+<p>Section <span class="highlight">[[open-pattern.programs]]</span> in your config. You can have multiple of them.</p>
+<p><span class="conf" id="matching">matching</span></p>
+<p>Here you can set your own glob patterns for opening matching URLs in the program you want them to open up in. You could for example open Youtube videos in your video player instead of your default browser.  To see the syntax for glob pattern you can follow this URL <a href="https://github.com/gobwas/glob#syntax" rel="noopener" title"gobwas/glob#syntax">https://github.com/gobwas/glob#syntax</a>.</p>
+<p>default=""</p>
+<p><span class="conf" id="program">program</span></p>
+<p>The program to open the file with.</p>
+<p>default=""</p>
+<p><span class="conf" id="args">args</span></p>
+<p>Arguments to pass to the program.</p>
+<p>default=""</p>
+<p><span class="conf" id="terminal">terminal</span></p>
+<p>If the program runs in the terminal set this to true.</p>
 <p>default=false</p>
 <h2>Style config</h2>
 <p>Section <span class="highlight">[style]</span> in your config</p>
 <p>All styles can be represented in their HEX value like #ffffff or with their name, so in this case white. The only special value is "default" which equals to transparent, so it will be the same color as your terminal.</p>
-<p>You can also use xrdb colors like this xrdb:color1 The program will use colors prefixed with an * first then look for URxvt or XTerm if it can't find any color prefixed with an asterisk. If you don't want tut to guess the prefix you can set the prefix yourself. If the xrdb color can't be found a preset color will be used. You'll have to set theme=none for this to work.</p>
+<p>You can also use xrdb colors like this xrdb:color1 The program will use colors prefixed with an * first then look for URxvt or XTerm if it can't find any color prefixed with an asterisk. If you don't want tut to guess the prefix you can set the prefix yourself. If the xrdb color can't be found a preset color will be used. You'll have to set theme="none" for this to work.</p>
 
-<p><span class="conf" id="xrdb-prefix">xrdb-prefix</span></p>
-<p>The xrdb prefix used for colors in .Xresources.</p>
-<p>default=guess</p>
 <p><span class="conf" id="theme">theme</span></p>
-<p>You can use some themes that comes bundled with tut. Check out the themes available on the URL below. If a theme is named "nord.ini" you just write theme=nord</p>
+<p>The theme to use. You can use some themes that comes bundled with tut. Check out the themes available on the URL below. If a theme is named nord.ini you just write theme="nord".</p>
 <p></p>
 <p><a href="https://github.com/RasmusLindroth/tut/tree/master/config/themes" title="themes for tut" rel="noopener">./tut/config/themes</a></p>
 <p></p>
 <p>You can also create a theme file in your config directory e.g. ~/.config/tut/themes/foo.ini and then set theme=foo.</p>
 <p></p>
-<p>If you want to use your own theme but don't want to create a new file, set theme=none and then you can create your own theme below.</p>
-<p>default=default</p>
+<p>If you want to use your own theme but don't want to create a new file, set theme="none" and then you can create your own theme below.</p>
+<p></p>
+<p>default="default"</p>
+<p><span class="conf" id="xrdb-prefix">xrdb-prefix</span></p>
+<p>The xrdb prefix used for colors in .Xresources.</p>
+<p>default="guess"</p>
 <p><span class="conf" id="background">background</span></p>
 <p>The background color used on most elements.</p>
+<p>default=""</p>
 <p><span class="conf" id="text">text</span></p>
 <p>The text color used on most of the text.</p>
+<p>default=""</p>
 <p><span class="conf" id="subtle">subtle</span></p>
 <p>The color to display subtle elements or subtle text. Like lines and help text.</p>
+<p>default=""</p>
 <p><span class="conf" id="warning-text">warning-text</span></p>
 <p>The color for errors or warnings</p>
+<p>default=""</p>
 <p><span class="conf" id="text-special-one">text-special-one</span></p>
 <p>This color is used to display username.</p>
+<p>default=""</p>
 <p><span class="conf" id="text-special-two">text-special-two</span></p>
 <p>This color is used to display username and key hints.</p>
+<p>default=""</p>
 <p><span class="conf" id="top-bar-background">top-bar-background</span></p>
 <p>The color of the bar at the top</p>
+<p>default=""</p>
 <p><span class="conf" id="top-bar-text">top-bar-text</span></p>
 <p>The color of the text in the bar at the top.</p>
+<p>default=""</p>
 <p><span class="conf" id="status-bar-background">status-bar-background</span></p>
 <p>The color of the bar at the bottom</p>
+<p>default=""</p>
 <p><span class="conf" id="status-bar-text">status-bar-text</span></p>
 <p>The color of the text in the bar at the bottom.</p>
+<p>default=""</p>
 <p><span class="conf" id="status-bar-view-background">status-bar-view-background</span></p>
 <p>The color of the bar at the bottom in view mode.</p>
+<p>default=""</p>
 <p><span class="conf" id="status-bar-view-text">status-bar-view-text</span></p>
 <p>The color of the text in the bar at the bottom in view mode.</p>
+<p>default=""</p>
 <p><span class="conf" id="command-text">command-text</span></p>
 <p>The color of the text in the command bar at the bottom.</p>
+<p>default=""</p>
 <p><span class="conf" id="list-selected-background">list-selected-background</span></p>
 <p>Background of selected list items.</p>
+<p>default=""</p>
 <p><span class="conf" id="list-selected-text">list-selected-text</span></p>
 <p>The text color of selected list items.</p>
+<p>default=""</p>
 <p><span class="conf" id="list-selected-inactive-background">list-selected-inactive-background</span></p>
 <p>The background color of selected list items that are out of focus.</p>
+<p>default=""</p>
 <p><span class="conf" id="list-selected-inactive-text">list-selected-inactive-text</span></p>
 <p>The text color of selected list items that are out of focus.</p>
+<p>default=""</p>
 <p><span class="conf" id="controls-text">controls-text</span></p>
 <p>The main color of the text for key hints</p>
+<p>default=""</p>
 <p><span class="conf" id="controls-highlight">controls-highlight</span></p>
 <p>The highlight color of for key hints</p>
+<p>default=""</p>
 <p><span class="conf" id="autocomplete-background">autocomplete-background</span></p>
 <p>The background color in dropdowns and autocompletions</p>
+<p>default=""</p>
 <p><span class="conf" id="autocomplete-text">autocomplete-text</span></p>
 <p>The text color in dropdowns at autocompletions</p>
+<p>default=""</p>
 <p><span class="conf" id="autocomplete-selected-background">autocomplete-selected-background</span></p>
 <p>The background color for selected value in dropdowns and autocompletions</p>
+<p>default=""</p>
 <p><span class="conf" id="autocomplete-selected-text">autocomplete-selected-text</span></p>
 <p>The text color for selected value in dropdowns and autocompletions</p>
+<p>default=""</p>
 <p><span class="conf" id="button-color-one">button-color-one</span></p>
 <p>The background color on selected button and the text color of unselected buttons</p>
+<p>default=""</p>
 <p><span class="conf" id="button-color-two">button-color-two</span></p>
 <p>The text color on selected button and the background color of unselected buttons</p>
+<p>default=""</p>
 <p><span class="conf" id="timeline-name-background">timeline-name-background</span></p>
 <p>The background on named timelines.</p>
+<p>default=""</p>
 <p><span class="conf" id="timeline-name-text">timeline-name-text</span></p>
 <p>The text color on named timelines</p>
+<p>default=""</p>
 <h2>Input config</h2>
 <p>Section <span class="highlight">[input]</span> in your config</p>
-<p>You can edit the keys for tut below.</p>
-<p>The syntax is a bit weird, but it works. And I'll try to explain it as well as I can.</p>
-<p>Example:</p>
-<p>status-favorite="[F]avorite","Un[F]avorite",'f','F'</p>
-<p>status-delete="[D]elete",'d','D'</p>
-<p>status-favorite and status-delete differs because favorite can be in two states, so you will have to add two key hints.</p>
-<p>Most keys will only have on key hint. Look at the default value for reference.</p>
-<p>Key hints must be in some of the following formats. Remember the quotation marks.</p>
-<p>"" = empty</p>
+<p>In this section you set the keys to be used in tut.</p>
+<p>		</p>
+<p>The hint option lets you set which part of the hint that will be highlighted in tut. E.g. [F]avorite results in a highlighted F and the rest of the text is displayed normaly.</p>
+<p>Some of the options can be in two states, like favorites, so there you can set the hint-alt option to something like Un[F]avorite.</p>
+<p>Examples:</p>
 <p>"[D]elete" = Delete with a highlighted D</p>
 <p>"Un[F]ollow" = UnFollow with a highlighted F</p>
 <p>"[Enter]" = Enter where everything is highlighted</p>
 <p>"Yan[K]" = YanK with a highlighted K</p>
-<p>After the hint (or hints) you must set the keys. You can do this in two ways, with single quotation marks or double ones.</p>
-<p>The single ones are for single chars like 'a', 'b', 'c' and double marks are for special keys like "Enter". Remember that they are case sensitive.</p>
-<p>To find the names of special keys you have to go to the following site and look for "var KeyNames = map[Key]string{"</p>
+<p>The keys option lets you define what key that should be pressed. This is limited to on character only and they are case sensetive.</p>
+<p>Example:</p>
+<p>keys=["j","J"]</p>
+<p>You can also set special-keys and they're for keys like Escape and Enter. To find the names of special keys you have to go to the following site and look for "var KeyNames = map[Key]string{"</p>
 <p><a href="https://github.com/gdamore/tcell/blob/master/key.go" title="Special keys from tcell" rel="noopener">gdamore/tcell/key.go</a>.</p>
 
-<p><span class="conf" id="global-down">global-down</span></p>
+<h2>Global-Down config</h2>
+<p>Section <span class="highlight">[input.global-down]</span> in your config</p>
 <p>Keys for moving down</p>
-<p>default="",'j','J',"Down"</p>
-<p><span class="conf" id="global-up">global-up</span></p>
-<p>Keys for moving up</p>
-<p>default="",'k','K',"Up"</p>
-<p><span class="conf" id="global-enter">global-enter</span></p>
+
+<p><span class="conf" id="keys">keys</span></p>
+<p>default=["j","J"]</p>
+<p><span class="conf" id="special-keys">special-keys</span></p>
+<p>default=["Down"]</p>
+<h2>Global-Up config</h2>
+<p>Section <span class="highlight">[input.global-up]</span> in your config</p>
+<p>Keys for moving down</p>
+
+<p><span class="conf" id="keys">keys</span></p>
+<p>default=["k","K"]</p>
+<p><span class="conf" id="special-keys">special-keys</span></p>
+<p>default=["Up"]</p>
+<h2>Global-Enter config</h2>
+<p>Section <span class="highlight">[input.global-enter]</span> in your config</p>
 <p>To select items</p>
-<p>default="","Enter"</p>
-<p><span class="conf" id="global-back">global-back</span></p>
+
+<p><span class="conf" id="special-keys">special-keys</span></p>
+<p>default=["Enter"]</p>
+<h2>Global-Back config</h2>
+<p>Section <span class="highlight">[input.global-back]</span> in your config</p>
 <p>To go back</p>
-<p>default="[Esc]","Esc"</p>
-<p><span class="conf" id="global-exit">global-exit</span></p>
-<p>To go back and exit Tut</p>
-<p>default="[Q]uit",'q','Q'</p>
-<p><span class="conf" id="main-home">main-home</span></p>
+
+<p><span class="conf" id="hint">hint</span></p>
+<p>default="[Esc]"</p>
+<p><span class="conf" id="special-keys">special-keys</span></p>
+<p>default=["Esc"]</p>
+<h2>Global-Exit config</h2>
+<p>Section <span class="highlight">[input.global-exit]</span> in your config</p>
+<p>To go back or exit</p>
+
+<p><span class="conf" id="hint">hint</span></p>
+<p>default="[Q]uit"</p>
+<p><span class="conf" id="keys">keys</span></p>
+<p>default=["q","Q"]</p>
+<h2>Main-Home config</h2>
+<p>Section <span class="highlight">[input.main-home]</span> in your config</p>
 <p>Move to the top</p>
-<p>default="",'g',"Home"</p>
-<p><span class="conf" id="main-end">main-end</span></p>
+
+<p><span class="conf" id="keys">keys</span></p>
+<p>default=["g"]</p>
+<p><span class="conf" id="special-keys">special-keys</span></p>
+<p>default=["Home"]</p>
+<h2>Main-End config</h2>
+<p>Section <span class="highlight">[input.main-end]</span> in your config</p>
 <p>Move to the bottom</p>
-<p>default="",'G',"End"</p>
-<p><span class="conf" id="main-prev-feed">main-prev-feed</span></p>
+
+<p><span class="conf" id="keys">keys</span></p>
+<p>default=["G"]</p>
+<p><span class="conf" id="special-keys">special-keys</span></p>
+<p>default=["End"]</p>
+<h2>Main-Prev-Feed config</h2>
+<p>Section <span class="highlight">[input.main-prev-feed]</span> in your config</p>
 <p>Go to previous feed</p>
-<p>default="",'h','H',"Left"</p>
-<p><span class="conf" id="main-next-feed">main-next-feed</span></p>
+
+<p><span class="conf" id="keys">keys</span></p>
+<p>default=["h","H"]</p>
+<p><span class="conf" id="special-keys">special-keys</span></p>
+<p>default=["Left"]</p>
+<h2>Main-Next-Feed config</h2>
+<p>Section <span class="highlight">[input.main-next-feed]</span> in your config</p>
 <p>Go to next feed</p>
-<p>default="",'l','L',"Right"</p>
-<p><span class="conf" id="main-prev-window">main-prev-window</span></p>
-<p>Focus on the previous feed window</p>
-<p>default="","Backtab"</p>
-<p><span class="conf" id="main-next-window">main-next-window</span></p>
-<p>Focus on the next feed window</p>
-<p>default="","Tab"</p>
-<p><span class="conf" id="main-notification-focus">main-notification-focus</span></p>
-<p>Focus on the notification list</p>
-<p>default="[N]otifications",'n','N'</p>
-<p><span class="conf" id="main-compose">main-compose</span></p>
+
+<p><span class="conf" id="keys">keys</span></p>
+<p>default=["l","L"]</p>
+<p><span class="conf" id="special-keys">special-keys</span></p>
+<p>default=["Right"]</p>
+<h2>Main-Prev-Pane config</h2>
+<p>Section <span class="highlight">[input.main-prev-pane]</span> in your config</p>
+<p>Focus on the previous feed pane</p>
+
+<p><span class="conf" id="special-keys">special-keys</span></p>
+<p>default=["Backtab"]</p>
+<h2>Main-Next-Pane config</h2>
+<p>Section <span class="highlight">[input.main-next-pane]</span> in your config</p>
+<p>Focus on the next feed pane</p>
+
+<p><span class="conf" id="special-keys">special-keys</span></p>
+<p>default=["Tab"]</p>
+<h2>Main-Next-Account config</h2>
+<p>Section <span class="highlight">[input.main-next-account]</span> in your config</p>
+<p>Focus on the next account</p>
+
+<p><span class="conf" id="special-keys">special-keys</span></p>
+<p>default=["Ctrl-N"]</p>
+<h2>Main-Prev-Account config</h2>
+<p>Section <span class="highlight">[input.main-prev-account]</span> in your config</p>
+<p>Focus on the previous account</p>
+
+<p><span class="conf" id="special-keys">special-keys</span></p>
+<p>default=["Ctrl-P"]</p>
+<h2>Main-Compose config</h2>
+<p>Section <span class="highlight">[input.main-compose]</span> in your config</p>
 <p>Compose a new toot</p>
-<p>default="",'c','C'</p>
-<p><span class="conf" id="status-avatar">status-avatar</span></p>
+
+<p><span class="conf" id="keys">keys</span></p>
+<p>default=["c","C"]</p>
+<h2>Status-Avatar config</h2>
+<p>Section <span class="highlight">[input.status-avatar]</span> in your config</p>
 <p>Open avatar</p>
-<p>default="[A]vatar",'a','A'</p>
-<p><span class="conf" id="status-boost">status-boost</span></p>
+
+<p><span class="conf" id="hint">hint</span></p>
+<p>default="[A]vatar"</p>
+<p><span class="conf" id="keys">keys</span></p>
+<p>default=["a","A"]</p>
+<h2>Status-Boost config</h2>
+<p>Section <span class="highlight">[input.status-boost]</span> in your config</p>
 <p>Boost a toot</p>
-<p>default="[B]oost","Un[B]oost",'b','B'</p>
-<p><span class="conf" id="status-edit">status-edit</span></p>
+
+<p><span class="conf" id="hint">hint</span></p>
+<p>default="[B]oost"</p>
+<p><span class="conf" id="keys">keys</span></p>
+<p>default=["b","B"]</p>
+<h2>Status-Edit config</h2>
+<p>Section <span class="highlight">[input.status-edit]</span> in your config</p>
 <p>Edit a toot</p>
-<p>default="[E]dit",'e','E'</p>
-<p><span class="conf" id="status-delete">status-delete</span></p>
+
+<p><span class="conf" id="hint">hint</span></p>
+<p>default="[E]dit"</p>
+<p><span class="conf" id="keys">keys</span></p>
+<p>default=["e","E"]</p>
+<h2>Status-Delete config</h2>
+<p>Section <span class="highlight">[input.status-delete]</span> in your config</p>
 <p>Delete a toot</p>
-<p>default="[D]elete",'d','D'</p>
-<p><span class="conf" id="status-favorite">status-favorite</span></p>
+
+<p><span class="conf" id="hint">hint</span></p>
+<p>default="[D]elete"</p>
+<p><span class="conf" id="keys">keys</span></p>
+<p>default=["d","D"]</p>
+<h2>Status-Favorite config</h2>
+<p>Section <span class="highlight">[input.status-favorite]</span> in your config</p>
 <p>Favorite a toot</p>
-<p>default="[F]avorite","Un[F]avorite",'f','F'</p>
-<p><span class="conf" id="status-media">status-media</span></p>
+
+<p><span class="conf" id="hint">hint</span></p>
+<p>default="[F]avorite"</p>
+<p><span class="conf" id="keys">keys</span></p>
+<p>default=["f","F"]</p>
+<h2>Status-Media config</h2>
+<p>Section <span class="highlight">[input.status-media]</span> in your config</p>
 <p>Open toots media files</p>
-<p>default="[M]edia",'m','M'</p>
-<p><span class="conf" id="status-links">status-links</span></p>
+
+<p><span class="conf" id="hint">hint</span></p>
+<p>default="[M]edia"</p>
+<p><span class="conf" id="keys">keys</span></p>
+<p>default=["m","M"]</p>
+<h2>Status-Links config</h2>
+<p>Section <span class="highlight">[input.status-links]</span> in your config</p>
 <p>Open links</p>
-<p>default="[O]pen",'o','O'</p>
-<p><span class="conf" id="status-poll">status-poll</span></p>
+
+<p><span class="conf" id="hint">hint</span></p>
+<p>default="[O]pen"</p>
+<p><span class="conf" id="keys">keys</span></p>
+<p>default=["o","O"]</p>
+<h2>Status-Poll config</h2>
+<p>Section <span class="highlight">[input.status-poll]</span> in your config</p>
 <p>Open poll</p>
-<p>default="[P]oll",'p','P'</p>
-<p><span class="conf" id="status-reply">status-reply</span></p>
+
+<p><span class="conf" id="hint">hint</span></p>
+<p>default="[P]oll"</p>
+<p><span class="conf" id="keys">keys</span></p>
+<p>default=["p","P"]</p>
+<h2>Status-Reply config</h2>
+<p>Section <span class="highlight">[input.status-reply]</span> in your config</p>
 <p>Reply to toot</p>
-<p>default="[R]eply",'r','R'</p>
-<p><span class="conf" id="status-bookmark">status-bookmark</span></p>
+
+<p><span class="conf" id="hint">hint</span></p>
+<p>default="[R]eply"</p>
+<p><span class="conf" id="keys">keys</span></p>
+<p>default=["r","R"]</p>
+<h2>Status-Bookmark config</h2>
+<p>Section <span class="highlight">[input.status-bookmark]</span> in your config</p>
 <p>Save/bookmark a toot</p>
-<p>default="[S]ave","Un[S]ave",'s','S'</p>
-<p><span class="conf" id="status-thread">status-thread</span></p>
+
+<p><span class="conf" id="hint">hint</span></p>
+<p>default="[S]ave"</p>
+<p><span class="conf" id="hint-alt">hint-alt</span></p>
+<p>default="Un[S]ave"</p>
+<p><span class="conf" id="keys">keys</span></p>
+<p>default=["s","S"]</p>
+<h2>Status-Thread config</h2>
+<p>Section <span class="highlight">[input.status-thread]</span> in your config</p>
 <p>View thread</p>
-<p>default="[T]hread",'t','T'</p>
-<p><span class="conf" id="status-user">status-user</span></p>
+
+<p><span class="conf" id="hint">hint</span></p>
+<p>default="[T]hread"</p>
+<p><span class="conf" id="keys">keys</span></p>
+<p>default=["t","T"]</p>
+<h2>Status-User config</h2>
+<p>Section <span class="highlight">[input.status-user]</span> in your config</p>
 <p>Open user profile</p>
-<p>default="[U]ser",'u','U'</p>
-<p><span class="conf" id="status-view-focus">status-view-focus</span></p>
+
+<p><span class="conf" id="hint">hint</span></p>
+<p>default="[U]ser"</p>
+<p><span class="conf" id="keys">keys</span></p>
+<p>default=["u","U"]</p>
+<h2>Status-View-Focus config</h2>
+<p>Section <span class="highlight">[input.status-view-focus]</span> in your config</p>
 <p>Open the view mode</p>
-<p>default="[V]iew",'v','V'</p>
-<p><span class="conf" id="status-yank">status-yank</span></p>
+
+<p><span class="conf" id="hint">hint</span></p>
+<p>default="[V]iew"</p>
+<p><span class="conf" id="keys">keys</span></p>
+<p>default=["v","V"]</p>
+<h2>Status-Yank config</h2>
+<p>Section <span class="highlight">[input.status-yank]</span> in your config</p>
 <p>Yank the url of the toot</p>
-<p>default="[Y]ank",'y','Y'</p>
-<p><span class="conf" id="status-toggle-cw">status-toggle-cw</span></p>
+
+<p><span class="conf" id="hint">hint</span></p>
+<p>default="[Y]ank"</p>
+<p><span class="conf" id="keys">keys</span></p>
+<p>default=["y","Y"]</p>
+<h2>Status-Toggle-Cw config</h2>
+<p>Section <span class="highlight">[input.status-toggle-cw]</span> in your config</p>
 <p>Show the content in a content warning</p>
-<p>default="Press [Z] to toggle cw",'z','Z'</p>
-<p><span class="conf" id="status-show-filtered">status-show-filtered</span></p>
+
+<p><span class="conf" id="hint">hint</span></p>
+<p>default="Press [Z] to toggle cw"</p>
+<p><span class="conf" id="keys">keys</span></p>
+<p>default=["z","Z"]</p>
+<h2>Status-Show-Filtered config</h2>
+<p>Section <span class="highlight">[input.status-show-filtered]</span> in your config</p>
 <p>Show the content of a filtered toot</p>
-<p>default="Press [Z] to view filtered toot",'z','Z'</p>
-<p><span class="conf" id="user-avatar">user-avatar</span></p>
+
+<p><span class="conf" id="hint">hint</span></p>
+<p>default="Press [Z] to view filtered toot"</p>
+<p><span class="conf" id="keys">keys</span></p>
+<p>default=["z","Z"]</p>
+<h2>User-Avatar config</h2>
+<p>Section <span class="highlight">[input.user-avatar]</span> in your config</p>
 <p>View avatar</p>
-<p>default="[A]vatar",'a','A'</p>
-<p><span class="conf" id="user-block">user-block</span></p>
+
+<p><span class="conf" id="hint">hint</span></p>
+<p>default="[A]vatar"</p>
+<p><span class="conf" id="keys">keys</span></p>
+<p>default=["a","A"]</p>
+<h2>User-Block config</h2>
+<p>Section <span class="highlight">[input.user-block]</span> in your config</p>
 <p>Block the user</p>
-<p>default="[B]lock","Un[B]lock",'b','B'</p>
-<p><span class="conf" id="user-follow">user-follow</span></p>
+
+<p><span class="conf" id="hint">hint</span></p>
+<p>default="[B]lock"</p>
+<p><span class="conf" id="hint-alt">hint-alt</span></p>
+<p>default="Un[B]lock"</p>
+<p><span class="conf" id="keys">keys</span></p>
+<p>default=["b","B"]</p>
+<h2>User-Follow config</h2>
+<p>Section <span class="highlight">[input.user-follow]</span> in your config</p>
 <p>Follow user</p>
-<p>default="[F]ollow","Un[F]ollow",'f','F'</p>
-<p><span class="conf" id="user-follow-request-decide">user-follow-request-decide</span></p>
+
+<p><span class="conf" id="hint">hint</span></p>
+<p>default="[F]ollow"</p>
+<p><span class="conf" id="hint-alt">hint-alt</span></p>
+<p>default="Un[F]ollow"</p>
+<p><span class="conf" id="keys">keys</span></p>
+<p>default=["f","F"]</p>
+<h2>User-Follow-Request-Decide config</h2>
+<p>Section <span class="highlight">[input.user-follow-request-decide]</span> in your config</p>
 <p>Follow user</p>
-<p>default="Follow [R]equest","Follow [R]equest",'r','R'</p>
-<p><span class="conf" id="user-mute">user-mute</span></p>
+
+<p><span class="conf" id="hint">hint</span></p>
+<p>default="Follow [R]equest"</p>
+<p><span class="conf" id="hint-alt">hint-alt</span></p>
+<p>default="Follow [R]equest"</p>
+<p><span class="conf" id="keys">keys</span></p>
+<p>default=["r","R"]</p>
+<h2>User-Mute config</h2>
+<p>Section <span class="highlight">[input.user-mute]</span> in your config</p>
 <p>Mute user</p>
-<p>default="[M]ute","Un[M]ute",'m','M'</p>
-<p><span class="conf" id="user-links">user-links</span></p>
+
+<p><span class="conf" id="hint">hint</span></p>
+<p>default="[M]ute"</p>
+<p><span class="conf" id="hint-alt">hint-alt</span></p>
+<p>default="Un[M]ute"</p>
+<p><span class="conf" id="keys">keys</span></p>
+<p>default=["m","M"]</p>
+<h2>User-Links config</h2>
+<p>Section <span class="highlight">[input.user-links]</span> in your config</p>
 <p>Open links</p>
-<p>default="[O]pen",'o','O'</p>
-<p><span class="conf" id="user-user">user-user</span></p>
+
+<p><span class="conf" id="hint">hint</span></p>
+<p>default="[O]pen"</p>
+<p><span class="conf" id="keys">keys</span></p>
+<p>default=["o","O"]</p>
+<h2>User-User config</h2>
+<p>Section <span class="highlight">[input.user-user]</span> in your config</p>
 <p>View user profile</p>
-<p>default="[U]ser",'u','U'</p>
-<p><span class="conf" id="user-view-focus">user-view-focus</span></p>
+
+<p><span class="conf" id="hint">hint</span></p>
+<p>default="[U]ser"</p>
+<p><span class="conf" id="keys">keys</span></p>
+<p>default=["u","U"]</p>
+<h2>User-View-Focus config</h2>
+<p>Section <span class="highlight">[input.user-view-focus]</span> in your config</p>
 <p>Open view mode</p>
-<p>default="[V]iew",'v','V'</p>
-<p><span class="conf" id="user-yank">user-yank</span></p>
+
+<p><span class="conf" id="hint">hint</span></p>
+<p>default="[V]iew"</p>
+<p><span class="conf" id="keys">keys</span></p>
+<p>default=["v","V"]</p>
+<h2>User-Yank config</h2>
+<p>Section <span class="highlight">[input.user-yank]</span> in your config</p>
 <p>Yank the user URL</p>
-<p>default="[Y]ank",'y','Y'</p>
-<p><span class="conf" id="list-open-feed">list-open-feed</span></p>
+
+<p><span class="conf" id="hint">hint</span></p>
+<p>default="[Y]ank"</p>
+<p><span class="conf" id="keys">keys</span></p>
+<p>default=["y","Y"]</p>
+<h2>List-Open-Feed config</h2>
+<p>Section <span class="highlight">[input.list-open-feed]</span> in your config</p>
 <p>Open list</p>
-<p>default="[O]pen",'o','O'</p>
-<p><span class="conf" id="list-user-list">list-user-list</span></p>
+
+<p><span class="conf" id="hint">hint</span></p>
+<p>default="[O]pen"</p>
+<p><span class="conf" id="keys">keys</span></p>
+<p>default=["o","O"]</p>
+<h2>List-User-List config</h2>
+<p>Section <span class="highlight">[input.list-user-list]</span> in your config</p>
 <p>List all users in a list</p>
-<p>default="[U]sers",'u','U'</p>
-<p><span class="conf" id="list-user-add">list-user-add</span></p>
+
+<p><span class="conf" id="hint">hint</span></p>
+<p>default="[U]sers"</p>
+<p><span class="conf" id="keys">keys</span></p>
+<p>default=["u","U"]</p>
+<h2>List-User-Add config</h2>
+<p>Section <span class="highlight">[input.list-user-add]</span> in your config</p>
 <p>Add user to list</p>
-<p>default="[A]dd",'a','A'</p>
-<p><span class="conf" id="list-user-delete">list-user-delete</span></p>
+
+<p><span class="conf" id="hint">hint</span></p>
+<p>default="[A]dd"</p>
+<p><span class="conf" id="keys">keys</span></p>
+<p>default=["a","A"]</p>
+<h2>List-User-Delete config</h2>
+<p>Section <span class="highlight">[input.list-user-delete]</span> in your config</p>
 <p>Delete user from list</p>
-<p>default="[D]elete",'d','D'</p>
-<p><span class="conf" id="link-open">link-open</span></p>
+
+<p><span class="conf" id="hint">hint</span></p>
+<p>default="[D]elete"</p>
+<p><span class="conf" id="keys">keys</span></p>
+<p>default=["d","D"]</p>
+<h2>Link-Open config</h2>
+<p>Section <span class="highlight">[input.link-open]</span> in your config</p>
 <p>Open URL</p>
-<p>default="[O]pen",'o','O'</p>
-<p><span class="conf" id="link-yank">link-yank</span></p>
+
+<p><span class="conf" id="hint">hint</span></p>
+<p>default="[O]pen"</p>
+<p><span class="conf" id="keys">keys</span></p>
+<p>default=["o","O"]</p>
+<h2>Link-Yank config</h2>
+<p>Section <span class="highlight">[input.link-yank]</span> in your config</p>
 <p>Yank the URL</p>
-<p>default="[Y]ank",'y','Y'</p>
-<p><span class="conf" id="tag-open-feed">tag-open-feed</span></p>
+
+<p><span class="conf" id="hint">hint</span></p>
+<p>default="[Y]ank"</p>
+<p><span class="conf" id="keys">keys</span></p>
+<p>default=["y","Y"]</p>
+<h2>Tag-Open-Feed config</h2>
+<p>Section <span class="highlight">[input.tag-open-feed]</span> in your config</p>
 <p>Open tag feed</p>
-<p>default="[O]pen",'o','O'</p>
-<p><span class="conf" id="tag-follow">tag-follow</span></p>
+
+<p><span class="conf" id="hint">hint</span></p>
+<p>default="[O]pen"</p>
+<p><span class="conf" id="keys">keys</span></p>
+<p>default=["o","O"]</p>
+<h2>Tag-Follow config</h2>
+<p>Section <span class="highlight">[input.tag-follow]</span> in your config</p>
 <p>Toggle follow on tag</p>
-<p>default="[F]ollow","Un[F]ollow",'f','F'</p>
-<p><span class="conf" id="compose-edit-cw">compose-edit-cw</span></p>
+
+<p><span class="conf" id="hint">hint</span></p>
+<p>default="[F]ollow"</p>
+<p><span class="conf" id="hint-alt">hint-alt</span></p>
+<p>default="Un[F]ollow"</p>
+<p><span class="conf" id="keys">keys</span></p>
+<p>default=["f","F"]</p>
+<h2>Compose-Edit-Cw config</h2>
+<p>Section <span class="highlight">[input.compose-edit-cw]</span> in your config</p>
 <p>Edit content warning text on new toot</p>
-<p>default="[C]W text",'c','C'</p>
-<p><span class="conf" id="compose-edit-text">compose-edit-text</span></p>
+
+<p><span class="conf" id="hint">hint</span></p>
+<p>default="[C]W text"</p>
+<p><span class="conf" id="keys">keys</span></p>
+<p>default=["c","C"]</p>
+<h2>Compose-Edit-Text config</h2>
+<p>Section <span class="highlight">[input.compose-edit-text]</span> in your config</p>
 <p>Edit the text on new toot</p>
-<p>default="[E]dit text",'e','E'</p>
-<p><span class="conf" id="compose-include-quote">compose-include-quote</span></p>
+
+<p><span class="conf" id="hint">hint</span></p>
+<p>default="[E]dit text"</p>
+<p><span class="conf" id="keys">keys</span></p>
+<p>default=["e","E"]</p>
+<h2>Compose-Include-Quote config</h2>
+<p>Section <span class="highlight">[input.compose-include-quote]</span> in your config</p>
 <p>Include a quote when replying</p>
-<p>default="[I]nclude quote",'i','I'</p>
-<p><span class="conf" id="compose-media-focus">compose-media-focus</span></p>
+
+<p><span class="conf" id="hint">hint</span></p>
+<p>default="[I]nclude quote"</p>
+<p><span class="conf" id="keys">keys</span></p>
+<p>default=["i","I"]</p>
+<h2>Compose-Media-Focus config</h2>
+<p>Section <span class="highlight">[input.compose-media-focus]</span> in your config</p>
 <p>Focus on adding media to toot</p>
-<p>default="[M]edia",'m','M'</p>
-<p><span class="conf" id="compose-post">compose-post</span></p>
+
+<p><span class="conf" id="hint">hint</span></p>
+<p>default="[M]edia"</p>
+<p><span class="conf" id="keys">keys</span></p>
+<p>default=["m","M"]</p>
+<h2>Compose-Post config</h2>
+<p>Section <span class="highlight">[input.compose-post]</span> in your config</p>
 <p>Post the new toot</p>
-<p>default="[P]ost",'p','P'</p>
-<p><span class="conf" id="compose-toggle-content-warning">compose-toggle-content-warning</span></p>
+
+<p><span class="conf" id="hint">hint</span></p>
+<p>default="[P]ost"</p>
+<p><span class="conf" id="keys">keys</span></p>
+<p>default=["p","P"]</p>
+<h2>Compose-Toggle-Content-Warning config</h2>
+<p>Section <span class="highlight">[input.compose-toggle-content-warning]</span> in your config</p>
 <p>Toggle content warning on toot</p>
-<p>default="[T]oggle CW",'t','T'</p>
-<p><span class="conf" id="compose-visibility">compose-visibility</span></p>
+
+<p><span class="conf" id="hint">hint</span></p>
+<p>default="[T]oggle CW"</p>
+<p><span class="conf" id="keys">keys</span></p>
+<p>default=["t","T"]</p>
+<h2>Compose-Visibility config</h2>
+<p>Section <span class="highlight">[input.compose-visibility]</span> in your config</p>
 <p>Edit the visibility on new toot</p>
-<p>default="[V]isibility",'v','V'</p>
-<p><span class="conf" id="compose-language">compose-language</span></p>
+
+<p><span class="conf" id="hint">hint</span></p>
+<p>default="[V]isibility"</p>
+<p><span class="conf" id="keys">keys</span></p>
+<p>default=["v","V"]</p>
+<h2>Compose-Language config</h2>
+<p>Section <span class="highlight">[input.compose-language]</span> in your config</p>
 <p>Edit the language of a toot</p>
-<p>default="[L]ang",'l','L'</p>
-<p><span class="conf" id="compose-poll">compose-poll</span></p>
+
+<p><span class="conf" id="hint">hint</span></p>
+<p>default="[L]ang"</p>
+<p><span class="conf" id="keys">keys</span></p>
+<p>default=["l","L"]</p>
+<h2>Compose-Poll config</h2>
+<p>Section <span class="highlight">[input.compose-poll]</span> in your config</p>
 <p>Switch to creating a poll</p>
-<p>default="P[O]ll",'o','O'</p>
-<p><span class="conf" id="media-delete">media-delete</span></p>
+
+<p><span class="conf" id="hint">hint</span></p>
+<p>default="P[O]ll"</p>
+<p><span class="conf" id="keys">keys</span></p>
+<p>default=["o","O"]</p>
+<h2>Media-Delete config</h2>
+<p>Section <span class="highlight">[input.media-delete]</span> in your config</p>
 <p>Delete media file</p>
-<p>default="[D]elete",'d','D'</p>
-<p><span class="conf" id="media-edit-desc">media-edit-desc</span></p>
+
+<p><span class="conf" id="hint">hint</span></p>
+<p>default="[D]elete"</p>
+<p><span class="conf" id="keys">keys</span></p>
+<p>default=["d","D"]</p>
+<h2>Media-Edit-Desc config</h2>
+<p>Section <span class="highlight">[input.media-edit-desc]</span> in your config</p>
 <p>Edit the description on media file</p>
-<p>default="[E]dit desc",'e','E'</p>
-<p><span class="conf" id="media-add">media-add</span></p>
+
+<p><span class="conf" id="hint">hint</span></p>
+<p>default="[E]dit desc"</p>
+<p><span class="conf" id="keys">keys</span></p>
+<p>default=["e","E"]</p>
+<h2>Media-Add config</h2>
+<p>Section <span class="highlight">[input.media-add]</span> in your config</p>
 <p>Add a new media file</p>
-<p>default="[A]dd",'a','A'</p>
-<p><span class="conf" id="vote-vote">vote-vote</span></p>
+
+<p><span class="conf" id="hint">hint</span></p>
+<p>default="[A]dd"</p>
+<p><span class="conf" id="keys">keys</span></p>
+<p>default=["a","A"]</p>
+<h2>Vote-Vote config</h2>
+<p>Section <span class="highlight">[input.vote-vote]</span> in your config</p>
 <p>Vote on poll</p>
-<p>default="[V]ote",'v','V'</p>
-<p><span class="conf" id="vote-select">vote-select</span></p>
+
+<p><span class="conf" id="hint">hint</span></p>
+<p>default="[V]ote"</p>
+<p><span class="conf" id="keys">keys</span></p>
+<p>default=["v","V"]</p>
+<h2>Vote-Select config</h2>
+<p>Section <span class="highlight">[input.vote-select]</span> in your config</p>
 <p>Select item to vote on</p>
-<p>default="[Enter] to select",' ', "Enter"</p>
-<p><span class="conf" id="poll-add">poll-add</span></p>
+
+<p><span class="conf" id="hint">hint</span></p>
+<p>default="[Enter] to select"</p>
+<p><span class="conf" id="special-keys">special-keys</span></p>
+<p>default=["Enter"]</p>
+<h2>Poll-Add config</h2>
+<p>Section <span class="highlight">[input.poll-add]</span> in your config</p>
 <p>Add a new poll option</p>
-<p>default="[A]dd",'a','A'</p>
-<p><span class="conf" id="poll-edit">poll-edit</span></p>
+
+<p><span class="conf" id="hint">hint</span></p>
+<p>default="[A]dd"</p>
+<p><span class="conf" id="keys">keys</span></p>
+<p>default=["a","A"]</p>
+<h2>Poll-Edit config</h2>
+<p>Section <span class="highlight">[input.poll-edit]</span> in your config</p>
 <p>Edit a poll option</p>
-<p>default="[E]dit",'e','E'</p>
-<p><span class="conf" id="poll-delete">poll-delete</span></p>
+
+<p><span class="conf" id="hint">hint</span></p>
+<p>default="[E]dit"</p>
+<p><span class="conf" id="keys">keys</span></p>
+<p>default=["e","E"]</p>
+<h2>Poll-Delete config</h2>
+<p>Section <span class="highlight">[input.poll-delete]</span> in your config</p>
 <p>Delete a poll option</p>
-<p>default="[D]elete",'d','D'</p>
-<p><span class="conf" id="poll-multi-toggle">poll-multi-toggle</span></p>
+
+<p><span class="conf" id="hint">hint</span></p>
+<p>default="[D]elete"</p>
+<p><span class="conf" id="keys">keys</span></p>
+<p>default=["d","D"]</p>
+<h2>Poll-Multi-Toggle config</h2>
+<p>Section <span class="highlight">[input.poll-multi-toggle]</span> in your config</p>
 <p>Toggle voting on multiple options</p>
-<p>default="Toggle [M]ultiple",'m','M'</p>
-<p><span class="conf" id="poll-expiration">poll-expiration</span></p>
+
+<p><span class="conf" id="hint">hint</span></p>
+<p>default="Toggle [M]ultiple"</p>
+<p><span class="conf" id="keys">keys</span></p>
+<p>default=["m","M"]</p>
+<h2>Poll-Expiration config</h2>
+<p>Section <span class="highlight">[input.poll-expiration]</span> in your config</p>
 <p>Change the expiration of poll</p>
-<p>default="E[X]pires",'x','X'</p>
-<p><span class="conf" id="preference-name">preference-name</span></p>
+
+<p><span class="conf" id="hint">hint</span></p>
+<p>default="E[X]pires"</p>
+<p><span class="conf" id="keys">keys</span></p>
+<p>default=["x","X"]</p>
+<h2>Preference-Name config</h2>
+<p>Section <span class="highlight">[input.preference-name]</span> in your config</p>
 <p>Change display name</p>
-<p>default="[N]ame",'n','N'</p>
-<p><span class="conf" id="preference-visibility">preference-visibility</span></p>
+
+<p><span class="conf" id="hint">hint</span></p>
+<p>default="[N]ame"</p>
+<p><span class="conf" id="keys">keys</span></p>
+<p>default=["n","N"]</p>
+<h2>Preference-Visibility config</h2>
+<p>Section <span class="highlight">[input.preference-visibility]</span> in your config</p>
 <p>Change default visibility of toots</p>
-<p>default="[V]isibility",'v','V'</p>
-<p><span class="conf" id="preference-bio">preference-bio</span></p>
+
+<p><span class="conf" id="hint">hint</span></p>
+<p>default="[V]isibility"</p>
+<p><span class="conf" id="keys">keys</span></p>
+<p>default=["v","V"]</p>
+<h2>Preference-Bio config</h2>
+<p>Section <span class="highlight">[input.preference-bio]</span> in your config</p>
 <p>Change bio in profile</p>
-<p>default="[B]io",'b','B'</p>
-<p><span class="conf" id="preference-save">preference-save</span></p>
+
+<p><span class="conf" id="hint">hint</span></p>
+<p>default="[B]io"</p>
+<p><span class="conf" id="keys">keys</span></p>
+<p>default=["b","B"]</p>
+<h2>Preference-Save config</h2>
+<p>Section <span class="highlight">[input.preference-save]</span> in your config</p>
 <p>Save your preferences</p>
-<p>default="[S]ave",'s','S'</p>
-<p><span class="conf" id="preference-fields">preference-fields</span></p>
+
+<p><span class="conf" id="hint">hint</span></p>
+<p>default="[S]ave"</p>
+<p><span class="conf" id="keys">keys</span></p>
+<p>default=["s","S"]</p>
+<h2>Preference-Fields config</h2>
+<p>Section <span class="highlight">[input.preference-fields]</span> in your config</p>
 <p>Edit profile fields</p>
-<p>default="[F]ields",'f','F'</p>
-<p><span class="conf" id="preference-fields-add">preference-fields-add</span></p>
+
+<p><span class="conf" id="hint">hint</span></p>
+<p>default="[F]ields"</p>
+<p><span class="conf" id="keys">keys</span></p>
+<p>default=["f","F"]</p>
+<h2>Preference-Fields-Add config</h2>
+<p>Section <span class="highlight">[input.preference-fields-add]</span> in your config</p>
 <p>Add new field</p>
-<p>default="[A]dd",'a','A'</p>
-<p><span class="conf" id="preference-fields-edit">preference-fields-edit</span></p>
+
+<p><span class="conf" id="hint">hint</span></p>
+<p>default="[A]dd"</p>
+<p><span class="conf" id="keys">keys</span></p>
+<p>default=["a","A"]</p>
+<h2>Preference-Fields-Edit config</h2>
+<p>Section <span class="highlight">[input.preference-fields-edit]</span> in your config</p>
 <p>Edit current field</p>
-<p>default="[E]dit",'e','E'</p>
-<p><span class="conf" id="preference-fields-delete">preference-fields-delete</span></p>
+
+<p><span class="conf" id="hint">hint</span></p>
+<p>default="[E]dit"</p>
+<p><span class="conf" id="keys">keys</span></p>
+<p>default=["e","E"]</p>
+<h2>Preference-Fields-Delete config</h2>
+<p>Section <span class="highlight">[input.preference-fields-delete]</span> in your config</p>
 <p>Delete current field</p>
-<p>default="[D]elete",'d','D'</p>
+
+<p><span class="conf" id="hint">hint</span></p>
+<p>default="[D]elete"</p>
+<p><span class="conf" id="keys">keys</span></p>
+<p>default=["d","D"]</p>
+<h2>Editor-Exit config</h2>
+<p>Section <span class="highlight">[input.editor-exit]</span> in your config</p>
+<p>Exit the editor</p>
+
+<p><span class="conf" id="hint">hint</span></p>
+<p>default="[Esc] when done"</p>
+<p><span class="conf" id="special-keys">special-keys</span></p>
+<p>default=["Esc"]</p>
 {{end}}
