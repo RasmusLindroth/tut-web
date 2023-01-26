@@ -30,12 +30,12 @@ It contains the default values. And can be good to look at for reference.</p>
 <p><span class="conf" id="date-relative">date-relative</span></p>
 <p>This displays relative dates instead for statuses that are one day or older the output is 1y2m1d (1 year 2 months and 1 day)</p>
 <p></p>
-<p>The value is an integear</p>
+<p>The value is an integer</p>
 <p>-1     = don't use relative dates</p>
 <p> 0     = always use relative dates, except for dates < 1 day</p>
 <p> 1 - ∞ = number of days to use relative dates</p>
 <p>				</p>
-<p>Value: 28 will display a relative date for toots that are between 1-28 days old. Otherwhise it will use the short or long format.</p>
+<p>Value: 28 will display a relative date for toots that are between 1-28 days old. Otherwise it will use the short or long format.</p>
 <p>default=-1</p>
 <p><span class="conf" id="max-width">max-width</span></p>
 <p>The max with of text before it wraps when displaying a toot.</p>
@@ -83,7 +83,7 @@ valid: mention, status, boost, follow, follow_request, favorite, poll, edit
 <p>Always jump to the newest post. May ruin your reading experience.</p>
 <p>default=false</p>
 <p><span class="conf" id="show-boosted-user">show-boosted-user</span></p>
-<p>Display the username of the person being boosted insted of the person that boosted.</p>
+<p>Display the username of the person being boosted instead of the person that boosted.</p>
 <p>default=false</p>
 <p><span class="conf" id="commands-in-new-pane">commands-in-new-pane</span></p>
 <p>Open a new pane when you run a command like :timeline home.</p>
@@ -97,7 +97,7 @@ valid: mention, status, boost, follow, follow_request, favorite, poll, edit
 <p>2 = Only show terminal title, and no top bar in tut</p>
 <p>3 = No terminal title and no top bar in tut.</p>
 
-valid: 0, 1, 2, 4
+valid: 0, 1, 2, 3
 
 <p>default=0</p>
 <p><span class="conf" id="redraw-ui">redraw-ui</span></p>
@@ -137,7 +137,7 @@ valid: home, direct, local, federated, bookmarks, saved, favorited, notification
 
 <p>default=""</p>
 <p><span class="conf" id="data">data</span></p>
-<p>Used for the tag type, so here you set the tag. If you have multiple you seperate them with a space.</p>
+<p>Used for the tag type, so here you set the tag. If you have multiple you separate them with a space.</p>
 <p>default=""</p>
 <p><span class="conf" id="keys">keys</span></p>
 <p>A list of keys to give this timeline focus. See under the input section to learn more about keys.</p>
@@ -296,6 +296,19 @@ valid: blocking, boosts, clear-notifications, close-pane, compose, edit, favorit
 <p>default=false</p>
 <h2>Open-Custom config</h2>
 <p>Section <span class="highlight">[open-custom]</span> in your config</p>
+<p>Example:</p>
+<p>[[open-custom.programs]]</p>
+<p>program = 'chromium'</p>
+<p>terminal = false</p>
+<p>hint = "[C]hrome"</p>
+<p>keys = ["c", "C"]</p>
+<p>		</p>
+<p>[[open-custom.programs]]</p>
+<p>program = 'imv'</p>
+<p>terminal = false</p>
+<p>hint = "[I]mv"</p>
+<p>keys = ["i", "I"]"</p>
+
 <h2>Programs config</h2>
 <p>Section <span class="highlight">[[open-custom.programs]]</span> in your config. You can have multiple of them.</p>
 <p><span class="conf" id="program">program</span></p>
@@ -408,16 +421,16 @@ valid: blocking, boosts, clear-notifications, close-pane, compose, edit, favorit
 <p>The highlight color of for key hints</p>
 <p>default=""</p>
 <p><span class="conf" id="autocomplete-background">autocomplete-background</span></p>
-<p>The background color in dropdowns and autocompletions</p>
+<p>The background color in drop-downs and autocompletions</p>
 <p>default=""</p>
 <p><span class="conf" id="autocomplete-text">autocomplete-text</span></p>
-<p>The text color in dropdowns at autocompletions</p>
+<p>The text color in drop-downs at autocompletions</p>
 <p>default=""</p>
 <p><span class="conf" id="autocomplete-selected-background">autocomplete-selected-background</span></p>
-<p>The background color for selected value in dropdowns and autocompletions</p>
+<p>The background color for selected value in drop-downs and autocompletions</p>
 <p>default=""</p>
 <p><span class="conf" id="autocomplete-selected-text">autocomplete-selected-text</span></p>
-<p>The text color for selected value in dropdowns and autocompletions</p>
+<p>The text color for selected value in drop-downs and autocompletions</p>
 <p>default=""</p>
 <p><span class="conf" id="button-color-one">button-color-one</span></p>
 <p>The background color on selected button and the text color of unselected buttons</p>
@@ -435,14 +448,14 @@ valid: blocking, boosts, clear-notifications, close-pane, compose, edit, favorit
 <p>Section <span class="highlight">[input]</span> in your config</p>
 <p>In this section you set the keys to be used in tut.</p>
 <p>		</p>
-<p>The hint option lets you set which part of the hint that will be highlighted in tut. E.g. [F]avorite results in a highlighted F and the rest of the text is displayed normaly.</p>
+<p>The hint option lets you set which part of the hint that will be highlighted in tut. E.g. [F]avorite results in a highlighted F and the rest of the text is displayed normally.</p>
 <p>Some of the options can be in two states, like favorites, so there you can set the hint-alt option to something like Un[F]avorite.</p>
 <p>Examples:</p>
 <p>"[D]elete" = Delete with a highlighted D</p>
 <p>"Un[F]ollow" = UnFollow with a highlighted F</p>
 <p>"[Enter]" = Enter where everything is highlighted</p>
 <p>"Yan[K]" = YanK with a highlighted K</p>
-<p>The keys option lets you define what key that should be pressed. This is limited to on character only and they are case sensetive.</p>
+<p>The keys option lets you define what key that should be pressed. This is limited to on character only and they are case sensitive.</p>
 <p>Example:</p>
 <p>keys=["j","J"]</p>
 <p>You can also set special-keys and they're for keys like Escape and Enter. To find the names of special keys you have to go to the following site and look for "var KeyNames = map[Key]string{"</p>
